@@ -20,11 +20,11 @@ class Model {
         segueArray.append("Home")
         segueArray.append("Products")
         
-        segueArray.append("Favourites")
+        //segueArray.append("Favourites")
         
         segueDictionary["Home"] = UIImage(named: "home")
         segueDictionary["Products"] = UIImage(named: "products")
-        segueDictionary["Favourites"] = UIImage(named: "products")
+        //segueDictionary["Favourites"] = UIImage(named: "products")
         
         
         self.refreshProducts()
