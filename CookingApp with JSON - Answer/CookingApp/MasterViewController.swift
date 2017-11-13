@@ -77,10 +77,14 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Create a cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         // Get the object to put in the cell
         let text = model.segueArray[indexPath.row]
+        
+        let dict = model.segueDictionary[text];
+        
+        cell.imageView!.image = dict;
         
         // Set the text in the cell
         cell.textLabel!.text = text
