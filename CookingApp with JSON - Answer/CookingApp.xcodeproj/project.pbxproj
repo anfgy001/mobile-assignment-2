@@ -24,7 +24,6 @@
 		384288581DCC931B00D860FD /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384288571DCC931B00D860FD /* FavouritesViewController.swift */; };
 		389D3C3A1F9C6F1F00F5F1D9 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389D3C391F9C6F1F00F5F1D9 /* SwiftyJSON.swift */; };
 		5D3BEEC81FB96C56007FA243 /* products.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D3BEEC71FB96C56007FA243 /* products.png */; };
-		5D3BEECA1FB96C69007FA243 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D3BEEC91FB96C69007FA243 /* home.png */; };
 		5D3BEED01FB97186007FA243 /* Title.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D3BEECF1FB97186007FA243 /* Title.png */; };
 /* End PBXBuildFile section */
 
@@ -60,7 +59,6 @@
 		384288571DCC931B00D860FD /* FavouritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 		389D3C391F9C6F1F00F5F1D9 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		5D3BEEC71FB96C56007FA243 /* products.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = products.png; sourceTree = "<group>"; };
-		5D3BEEC91FB96C69007FA243 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		5D3BEECF1FB97186007FA243 /* Title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Title.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				5D3BEECF1FB97186007FA243 /* Title.png */,
-				5D3BEEC91FB96C69007FA243 /* home.png */,
 				5D3BEEC71FB96C56007FA243 /* products.png */,
 				389D3C391F9C6F1F00F5F1D9 /* SwiftyJSON.swift */,
 				384288121DCB31B800D860FD /* AppDelegate.swift */,
@@ -235,7 +232,6 @@
 			files = (
 				5D3BEED01FB97186007FA243 /* Title.png in Resources */,
 				3842881D1DCB31B800D860FD /* Main.storyboard in Resources */,
-				5D3BEECA1FB96C69007FA243 /* home.png in Resources */,
 				384288221DCB31B800D860FD /* LaunchScreen.xib in Resources */,
 				3842881F1DCB31B800D860FD /* Images.xcassets in Resources */,
 				5D3BEEC81FB96C56007FA243 /* products.png in Resources */,

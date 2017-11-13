@@ -64,13 +64,14 @@ class Model {
                 
                     for count in 0...json.count - 1
                     {
+                        print(count);
                         let newProduct = Product()
                         newProduct.name = json[count]["name"].string
                         //newProduct.details = json[count]["Product"].string
                         newProduct.uid = json[count]["uid"].string
                         
-                        let imgURL = "http://www.partiklezoo.com/Products/" + json[count]["image"].string!
-                        
+                        let imgURL = json[count]["image"].string!
+                        print("test");
                         self.addItemToProducts(newProduct, imageURL: imgURL)
                     }
                 }
@@ -94,8 +95,8 @@ class Model {
             storedProducts = results as! [NSManagedObject]
             
             if (storedProducts.count > 0) {
-                for index in 0 ... storedProducts.count - 1
-                {
+                print(storedProducts.count);
+                for index in 0 ... storedProducts.count - 1 {
                     let binaryData = storedProducts[index].value(forKey: "image") as! Data
                     
                     let image = UIImage(data: binaryData)
@@ -120,7 +121,7 @@ class Model {
     
     func checkForProduct(_ searchItem: Product) -> Int {
         var targetIndex = -1
-        
+        print(Products.count);
         if (Products.count > 0) {
             for index in 0 ... Products.count - 1 {
                 if (Products[index].uid.isEqual(searchItem.uid)) {
@@ -133,12 +134,13 @@ class Model {
     }
     
     func addItemToProducts(_ newProduct: Product!, imageURL: String) {
+        //print(checkForProduct(newProduct));
         if (checkForProduct(newProduct) == -1)
         {
             let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            
+            print("additemtoproducts1");
             let picture = UIImageJPEGRepresentation(loadImage(imageURL), 1)
-            
+            print("additemtoproducts2");
             let entity =  NSEntityDescription.entity(forEntityName: "Products", in:managedContext)
             
             let ProductToAdd = NSManagedObject(entity: entity!, insertInto: managedContext)
@@ -165,22 +167,25 @@ class Model {
     
     func loadImage(_ imageURL: String) -> UIImage
     {
-        
+        print("gets here")
         var image: UIImage!
         
         if let url = NSURL(string: imageURL) {
             print(url);
             if let data = NSData(contentsOf: url as URL){
                 image = UIImage(data: data as Data)
-                
+                print("done");
             }
         }
         
-        if (image == nil)
-        {
-            let failImage = UIImage(named: "home")
-            return failImage!;
-        }
+        //if (image == nil)
+        //{
+        //    print("gets here 2");
+         //   let failImage = UIImage(named: "home")
+        //    return failImage!;
+        //}
+        
+        //print(image);
         
         return image!
     }
