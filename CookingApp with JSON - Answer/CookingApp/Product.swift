@@ -9,27 +9,28 @@ import UIKit
 
 class Product: NSObject {
     var image: UIImage?
-    var details: String! = ""
+    //var details: String! = ""
+    var desc: String! = ""
     var name: String! = ""
-    var favourite = false
+    //var favourite = false
     var uid: String!
     
     override init() {
     }
     
-    init(uid: String, name: String, details: String, image: UIImage, favourite: Bool) {
+    init(uid: String, name: String, image: UIImage) {
         self.uid = uid
         self.name = name
-        self.details = details
+        //self.details = details
         self.image = image
-        self.favourite = favourite
+        //self.favourite = favourite
     }
     
-    init(uid: String, name: String, details: String) {
+    init(uid: String, name: String) {
         self.uid = uid
         self.name = name
-        self.details = details
-        self.favourite = false
+        //self.details = details
+        //self.favourite = false
     }
     
     override func isEqual(_ object: Any?) -> Bool {

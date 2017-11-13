@@ -11,6 +11,9 @@ class DetailViewController: UIViewController {
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
+    @IBOutlet weak var titleImage: UIImageView!
+    
+    
 
     var detailItem: AnyObject? {
         didSet {
@@ -32,6 +35,8 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.configureView()
+        
+        //titleImage.image = UIImage(named: "Title");
     }
 
     override func didReceiveMemoryWarning() {

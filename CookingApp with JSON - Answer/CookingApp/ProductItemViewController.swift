@@ -12,7 +12,11 @@ class ProductItemViewController: DetailViewController {
     let model = SingletonManager.model
     
     @IBOutlet weak var ProductImage: UIImageView!
+    
     @IBOutlet weak var titleLabel: UILabel!
+    
+    
+    @IBOutlet weak var AddToCartButton: UIButton!
     
     @IBOutlet weak var favouriteButton: UIButton!
     
@@ -22,19 +26,19 @@ class ProductItemViewController: DetailViewController {
         }
     }
     
-    func setFavouriteButton() {
-        favouriteButton.setTitle("+", for: UIControlState())
-        if (self.ProductItem!.favourite) {
-            favouriteButton.setTitle("-", for: UIControlState())
-        }
-    }
+    //func setFavouriteButton() {
+    //    favouriteButton.setTitle("+", for: UIControlState())
+    //    if (self.ProductItem!.favourite) {
+    //        favouriteButton.setTitle("-", for: UIControlState())
+    //    }
+    //}
     
     override func configureView() {
         // Update the user interface for the detail item.
         if let Product = self.ProductItem {
             self.ProductImage.image = Product.image
             self.titleLabel.text = Product.name
-            self.setFavouriteButton()
+            //self.setFavouriteButton()
         }
     }
     
@@ -50,13 +54,13 @@ class ProductItemViewController: DetailViewController {
     }
     
     @IBAction func favouriteSelected(_ sender: AnyObject) {
-        if (self.ProductItem!.favourite) {
-            self.ProductItem!.favourite = false
-        }
-        else {
-            self.ProductItem!.favourite = true
-        }
+        ///if (self.ProductItem!.favourite) {
+        //    self.ProductItem!.favourite = false
+        //}
+        //else {
+            //self.ProductItem!.favourite = true
+        //}
         self.model.updateProduct(self.ProductItem)
-        self.setFavouriteButton()
+        //self.setFavouriteButton()
     }
 }

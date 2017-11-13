@@ -40,10 +40,10 @@ class Model {
             {
                 for count in 0...Products.count - 1
                 {
-                    if Products[count].favourite
-                    {
-                        selectedProducts.append(Products[count])
-                    }
+                    //if Products[count].favourite
+                    //{
+                     //   selectedProducts.append(Products[count])
+                    //}
                 }
             }
             
@@ -53,7 +53,7 @@ class Model {
     
     func refreshProducts()
     {
-        let url = NSURL(string: "http://www.partiklezoo.com/Products/Products.txt")
+        let url = NSURL(string: "http://partiklezoo.com/3dprinting/")
         let config = URLSessionConfiguration.default
         config.isDiscretionary = true
         let session = URLSession(configuration: config)
@@ -66,7 +66,7 @@ class Model {
                     {
                         let newProduct = Product()
                         newProduct.name = json[count]["name"].string
-                        newProduct.details = json[count]["Product"].string
+                        //newProduct.details = json[count]["Product"].string
                         newProduct.uid = json[count]["uid"].string
                         
                         let imgURL = "http://www.partiklezoo.com/Products/" + json[count]["image"].string!
@@ -99,12 +99,14 @@ class Model {
                     let binaryData = storedProducts[index].value(forKey: "image") as! Data
                     
                     let image = UIImage(data: binaryData)
-                    let details = storedProducts[index].value(forKey: "details") as! String
+                    //let details = storedProducts[index].value(forKey: "details") as! String
                     let name = storedProducts[index].value(forKey: "name") as! String
                     let uid = storedProducts[index].value(forKey: "uid") as! String
-                    let favourite = storedProducts[index].value(forKey: "favourite") as! Bool
+                    //let favourite = storedProducts[index].value(forKey: "favourite") as! Bool
                     
-                    let loadedProduct = Product(uid: uid, name: name, details: details, image: image!, favourite: favourite);
+                    
+                    
+                    let loadedProduct = Product(uid: uid, name: name, image: image!);
                     
                     Products.append(loadedProduct)
                 }
@@ -143,9 +145,9 @@ class Model {
             
             ProductToAdd.setValue(picture, forKey: "image")
             ProductToAdd.setValue(newProduct.name, forKey: "name")
-            ProductToAdd.setValue(newProduct.details, forKey: "details")
+            //ProductToAdd.setValue(newProduct.details, forKey: "details")
             ProductToAdd.setValue(newProduct.uid, forKey: "uid")
-            ProductToAdd.setValue(newProduct.favourite, forKey: "favourite")
+            //ProductToAdd.setValue(newProduct.favourite, forKey: "favourite")
             
             do
             {
@@ -167,9 +169,17 @@ class Model {
         var image: UIImage!
         
         if let url = NSURL(string: imageURL) {
+            print(url);
             if let data = NSData(contentsOf: url as URL){
                 image = UIImage(data: data as Data)
+                
             }
+        }
+        
+        if (image == nil)
+        {
+            let failImage = UIImage(named: "home")
+            return failImage!;
         }
         
         return image!
@@ -188,7 +198,7 @@ class Model {
                 
                     let managedObject = fetchResults[0]
                 
-                    managedObject.setValue(newProduct.details, forKey: "details")
+                   // managedObject.setValue(newProduct.details, forKey: "details")
                     do
                     {
                         try managedContext.save()

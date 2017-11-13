@@ -37,14 +37,37 @@
                     <view key="view" contentMode="scaleToFill" id="svH-Pt-448">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U5e-UF-wID">
+                                <rect key="frame" x="30" y="134" width="354" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96O-BF-ViH">
+                                <rect key="frame" x="30" y="213" width="364" height="149"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Ultimate Cosplay has been in operation since 2017 and has become one of the world's largest cosplay product deliverers world-wide.</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="1"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.32488384040000001" green="0.72212303050000004" blue="0.89306351839999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Home" id="mOI-FS-AaM"/>
+                    <navigationItem key="navigationItem" title="Ultimate Cosplay" id="mOI-FS-AaM"/>
+                    <connections>
+                        <outlet property="titleImage" destination="U5e-UF-wID" id="JXR-En-eLH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-38" y="873"/>
+            <point key="canvasLocation" x="-39.130434782608695" y="872.28260869565224"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
@@ -234,7 +257,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORz-bQ-tGi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Product Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORz-bQ-tGi">
                                 <rect key="frame" x="16" y="559" width="514" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="gms-rh-yvl"/>
@@ -243,7 +266,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IV2-dR-Mt1">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IV2-dR-Mt1">
                                 <rect key="frame" x="16" y="72" width="568" height="472"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7zS-4P-Q63">
@@ -258,6 +281,11 @@
                                 <connections>
                                     <action selector="favouriteSelected:" destination="N3O-Pj-BeQ" eventType="touchUpInside" id="6FO-bK-It0"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IcK-T7-q9s">
+                                <rect key="frame" x="147" y="686" width="79" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add to Cart"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -280,14 +308,15 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Recipe" id="HDx-nd-XpP"/>
                     <connections>
+                        <outlet property="AddToCartButton" destination="IcK-T7-q9s" id="Z9S-nO-XKs"/>
+                        <outlet property="ProductImage" destination="IV2-dR-Mt1" id="D6c-Sw-BIT"/>
                         <outlet property="favouriteButton" destination="7zS-4P-Q63" id="z0R-tk-SWR"/>
-                        <outlet property="recipeImage" destination="IV2-dR-Mt1" id="PvO-6V-CFQ"/>
                         <outlet property="titleLabel" destination="ORz-bQ-tGi" id="W5u-TD-0nz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wie-Hy-C2F" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="709" y="2425"/>
+            <point key="canvasLocation" x="708.69565217391312" y="2424.4565217391305"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pkb-6S-UAI">
