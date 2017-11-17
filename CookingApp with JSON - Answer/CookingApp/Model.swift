@@ -19,12 +19,13 @@ class Model {
     init() {
         segueArray.append("Home")
         segueArray.append("Products")
+        segueArray.append("Cart")
         
         //segueArray.append("Favourites")
         
         segueDictionary["Home"] = UIImage(named: "home")
         segueDictionary["Products"] = UIImage(named: "products")
-        //segueDictionary["Favourites"] = UIImage(named: "products")
+        segueDictionary["Cart"] = UIImage(named: "cart");
         
         
         self.refreshProducts()
@@ -32,7 +33,7 @@ class Model {
         self.loadProducts()
     }
     
-    var favourites: [Product] {
+    var cartList: [Product] { //aka favourites
         get {
             var selectedProducts = [Product]()
             
@@ -40,10 +41,10 @@ class Model {
             {
                 for count in 0...Products.count - 1
                 {
-                    //if Products[count].favourite
-                    //{
-                     //   selectedProducts.append(Products[count])
-                    //}
+                    if Products[count].addedToCart
+                    {
+                        selectedProducts.append(Products[count])
+                    }
                 }
             }
             
@@ -191,6 +192,7 @@ class Model {
     }
     
     func updateProduct(_ newProduct: Product!) {
+        
         let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Products")
@@ -207,6 +209,7 @@ class Model {
                     do
                     {
                         try managedContext.save()
+                        print("Updated product (in model)....");
                     }
                     catch let error as NSError
                     {

@@ -121,7 +121,7 @@
                     <connections>
                         <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="Home" id="sTK-hf-Urf"/>
                         <segue destination="dkF-tN-1iu" kind="showDetail" identifier="Products" id="02d-82-pwV"/>
-                        <segue destination="wBQ-5o-6Qm" kind="showDetail" identifier="Favourites" id="PtL-IZ-e1y"/>
+                        <segue destination="wBQ-5o-6Qm" kind="showDetail" identifier="Cart" id="PtL-IZ-e1y"/>
                         <segue destination="jjP-B8-Vd9" kind="showDetail" identifier="Search" id="rxc-to-Ol0"/>
                         <segue destination="XsB-O5-nvd" kind="showDetail" id="WqW-0n-b2Q"/>
                         <segue destination="Eet-er-jan" kind="showDetail" id="yos-AX-8T3"/>
@@ -260,35 +260,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Product Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORz-bQ-tGi">
-                                <rect key="frame" x="16" y="559" width="514" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="gms-rh-yvl"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Product Information" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORz-bQ-tGi">
+                                <rect key="frame" x="16" y="559" width="553" height="21"/>
+                                <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IV2-dR-Mt1">
-                                <rect key="frame" x="16" y="72" width="568" height="472"/>
+                                <rect key="frame" x="15" y="72" width="568" height="472"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7zS-4P-Q63">
-                                <rect key="frame" x="538" y="555" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="BXm-jt-dN2"/>
-                                    <constraint firstAttribute="width" constant="46" id="fed-12-oHY"/>
-                                </constraints>
-                                <state key="normal" title="+">
+                                <rect key="frame" x="522" y="555" width="79" height="30"/>
+                                <state key="normal" title="Add to Cart">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="favouriteSelected:" destination="N3O-Pj-BeQ" eventType="touchUpInside" id="6FO-bK-It0"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IcK-T7-q9s">
-                                <rect key="frame" x="147" y="686" width="79" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add to Cart"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.3252929151058197" green="0.72314411401748657" blue="0.8943219780921936" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -311,7 +300,6 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Recipe" id="HDx-nd-XpP"/>
                     <connections>
-                        <outlet property="AddToCartButton" destination="IcK-T7-q9s" id="Z9S-nO-XKs"/>
                         <outlet property="ProductImage" destination="IV2-dR-Mt1" id="D6c-Sw-BIT"/>
                         <outlet property="favouriteButton" destination="7zS-4P-Q63" id="z0R-tk-SWR"/>
                         <outlet property="titleLabel" destination="ORz-bQ-tGi" id="W5u-TD-0nz"/>
@@ -319,7 +307,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wie-Hy-C2F" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="708.69565217391312" y="2424.4565217391305"/>
+            <point key="canvasLocation" x="707.24637681159425" y="2423.6413043478265"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pkb-6S-UAI">
@@ -397,7 +385,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Favourites" id="Bbt-zw-ZUl"/>
+                    <navigationItem key="navigationItem" title="Cart" id="Bbt-zw-ZUl"/>
                     <connections>
                         <outlet property="collectionView" destination="oih-08-GIr" id="5ZG-Vd-ZZv"/>
                     </connections>

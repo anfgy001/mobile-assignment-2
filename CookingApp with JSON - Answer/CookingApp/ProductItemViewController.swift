@@ -37,7 +37,7 @@ class ProductItemViewController: DetailViewController {
         // Update the user interface for the detail item.
         if let Product = self.ProductItem {
             self.ProductImage.image = Product.image
-            self.titleLabel.text = Product.name
+            self.titleLabel.text = Product.name + "\n Product ID: " + Product.uid;
             //self.setFavouriteButton()
         }
     }
@@ -54,13 +54,11 @@ class ProductItemViewController: DetailViewController {
     }
     
     @IBAction func favouriteSelected(_ sender: AnyObject) {
-        ///if (self.ProductItem!.favourite) {
-        //    self.ProductItem!.favourite = false
-        //}
-        //else {
-            //self.ProductItem!.favourite = true
-        //}
+        
+        self.ProductItem!.addedToCart = true
+        print("\(self.ProductItem!.name!) has been added to your cart");
+
         self.model.updateProduct(self.ProductItem)
-        //self.setFavouriteButton()
+        
     }
 }

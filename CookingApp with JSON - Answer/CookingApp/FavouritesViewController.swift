@@ -19,8 +19,10 @@ class FavouritesViewController: DetailViewController, UICollectionViewDataSource
     }
     
     func configureCollectionView() {
+        
         self.collectionView!.dataSource = self
         self.collectionView!.delegate = self
+        print("Number of cart items = \(model.cartList.count)");
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,6 +33,8 @@ class FavouritesViewController: DetailViewController, UICollectionViewDataSource
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        print("top of the prepare");
+        
         // Find out what row was selected
         let indexPath = self.collectionView?.indexPath(for: sender as! Cell)
         
@@ -40,7 +44,9 @@ class FavouritesViewController: DetailViewController, UICollectionViewDataSource
         let detailView = (segue.destination as! UINavigationController).topViewController as! ProductItemViewController
         
         // Get the selected cell's image
-        let Product = model.favourites[indexPath!.row]
+        let Product = model.cartList[indexPath!.row]
+
+        
         
         // Pass the content to the detail view
         detailView.ProductItem = Product
@@ -59,7 +65,7 @@ class FavouritesViewController: DetailViewController, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.favourites.count
+        return model.cartList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -68,10 +74,10 @@ class FavouritesViewController: DetailViewController, UICollectionViewDataSource
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! Cell
         
         // Set the image in the cell
-        cell.cellImageView.image = model.favourites[indexPath.row].image
+        cell.cellImageView.image = model.cartList[indexPath.row].image
         
         // Set the text in the cell
-        cell.cellLabel.text = model.favourites[indexPath.row].name
+        cell.cellLabel.text = model.cartList[indexPath.row].name
         
         // Return the cell
         return cell

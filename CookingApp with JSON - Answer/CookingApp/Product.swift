@@ -14,6 +14,7 @@ class Product: NSObject {
     var name: String! = ""
     //var favourite = false
     var uid: String!
+    var addedToCart = false;
     
     override init() {
     }
@@ -34,8 +35,8 @@ class Product: NSObject {
     }
     
     override func isEqual(_ object: Any?) -> Bool {
-        if let otherRecipe = object as? Product {
-            if self.uid == otherRecipe.uid && self.name == otherRecipe.name && self.image!.isEqual(otherRecipe.image) {
+        if let otherProduct = object as? Product {
+            if self.uid == otherProduct.uid && self.name == otherProduct.name && self.image!.isEqual(otherProduct.image) {
                 return true
             }
             else {
