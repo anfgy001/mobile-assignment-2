@@ -7,7 +7,8 @@
 
 import UIKit
 
-class ProductItemViewController: DetailViewController {
+class ProductItemViewController: DetailViewController, UIPickerViewDataSource, UIPickerViewDelegate
+    {
     
     let model = SingletonManager.model
     
@@ -15,6 +16,7 @@ class ProductItemViewController: DetailViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var PickerView: UIPickerView!
     
     @IBOutlet weak var AddToCartButton: UIButton!
     
@@ -24,6 +26,28 @@ class ProductItemViewController: DetailViewController {
         didSet {
             // Update the view.
         }
+    }
+    
+    let printTypes = ["PLA", "ABS"];
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int
+    {
+        return 1;
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
+    {
+        return printTypes[row];
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
+        return printTypes.count;
+    }
+    
+    // To enable pickerview changing
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        //titleLabel.text = printTypes[row];
     }
     
     //func setFavouriteButton() {
