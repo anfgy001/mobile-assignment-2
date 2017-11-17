@@ -14,6 +14,7 @@ class Product: NSObject {
     var name: String! = ""
     //var favourite = false
     var uid: String!
+    var price: String!
     var addedToCart = false;
     
     override init() {
@@ -32,6 +33,14 @@ class Product: NSObject {
         self.name = name
         //self.details = details
         //self.favourite = false
+    }
+    
+    init(uid: String, name: String, image: UIImage, price: String)
+    {
+        self.uid = uid;
+        self.name = name;
+        self.image = image;
+        self.price = price;
     }
     
     override func isEqual(_ object: Any?) -> Bool {

@@ -37,7 +37,7 @@ class ProductItemViewController: DetailViewController {
         // Update the user interface for the detail item.
         if let Product = self.ProductItem {
             self.ProductImage.image = Product.image
-            self.titleLabel.text = Product.name + "\n Product ID: " + Product.uid;
+            self.titleLabel.text = Product.name + "\n Product ID: " + Product.uid + "\n Product Price: " + Product.price!;
             //self.setFavouriteButton()
         }
     }

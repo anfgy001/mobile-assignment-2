@@ -70,9 +70,10 @@ class Model {
                         newProduct.name = json[count]["name"].string
                         //newProduct.details = json[count]["Product"].string
                         newProduct.uid = json[count]["uid"].string
-                        
+                        newProduct.price = json[count]["price"].string;
                         let imgURL = json[count]["image"].string!
-                        print("test");
+                        
+                        print("new product price is ");
                         self.addItemToProducts(newProduct, imageURL: imgURL)
                     }
                 }
@@ -96,7 +97,7 @@ class Model {
             storedProducts = results as! [NSManagedObject]
             
             if (storedProducts.count > 0) {
-                print(storedProducts.count);
+                print("Stored products count is \(storedProducts.count)");
                 for index in 0 ... storedProducts.count - 1 {
                     let binaryData = storedProducts[index].value(forKey: "image") as! Data
                     
@@ -104,11 +105,15 @@ class Model {
                     //let details = storedProducts[index].value(forKey: "details") as! String
                     let name = storedProducts[index].value(forKey: "name") as! String
                     let uid = storedProducts[index].value(forKey: "uid") as! String
+                    let price = storedProducts[index].value(forKey: "price") as! String
+                    
                     //let favourite = storedProducts[index].value(forKey: "favourite") as! Bool
                     
                     
                     
-                    let loadedProduct = Product(uid: uid, name: name, image: image!);
+                    let loadedProduct = Product(uid: uid, name: name, image: image!, price: price);
+                    
+                    print("The price is " + price);
                     
                     Products.append(loadedProduct)
                 }
@@ -150,6 +155,7 @@ class Model {
             ProductToAdd.setValue(newProduct.name, forKey: "name")
             //ProductToAdd.setValue(newProduct.details, forKey: "details")
             ProductToAdd.setValue(newProduct.uid, forKey: "uid")
+            ProductToAdd.setValue(newProduct.price, forKey: "price");
             //ProductToAdd.setValue(newProduct.favourite, forKey: "favourite")
             
             do
