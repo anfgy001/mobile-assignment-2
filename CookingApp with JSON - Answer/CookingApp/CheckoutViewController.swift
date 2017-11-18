@@ -9,19 +9,23 @@
 import Foundation
 import UIKit
 
-class CheckoutViewController : UIViewController
-{
+class CheckoutViewController : DetailViewController {
     
     let model = SingletonManager.model
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.configureView()
         //print("You have  \(model.cartList.count) items");
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func configureView()
+    {
+        
     }
 }

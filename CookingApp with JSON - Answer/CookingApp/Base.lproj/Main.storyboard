@@ -124,7 +124,7 @@
                         <segue destination="wBQ-5o-6Qm" kind="showDetail" identifier="Cart" id="PtL-IZ-e1y"/>
                         <segue destination="jjP-B8-Vd9" kind="showDetail" identifier="Search" id="rxc-to-Ol0"/>
                         <segue destination="XsB-O5-nvd" kind="showDetail" id="WqW-0n-b2Q"/>
-                        <segue destination="Eet-er-jan" kind="showDetail" identifier="checkout" id="yos-AX-8T3"/>
+                        <segue destination="Eet-er-jan" kind="showDetail" identifier="Checkout" id="yos-AX-8T3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
