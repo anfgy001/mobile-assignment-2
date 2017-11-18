@@ -22,6 +22,10 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
     
     @IBOutlet weak var favouriteButton: UIButton!
     
+    var changedToABS:Bool = false;
+    
+    var ABSPrice:Double = -1;
+    
     var ProductItem: Product? {
         didSet {
             // Update the view.
@@ -46,8 +50,48 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
     }
     
     // To enable pickerview changing
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //titleLabel.text = printTypes[row];
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        if (printTypes[row] == "ABS")
+        {
+            // Only change the price to ABS if it hasn't been done before
+            // (ABSPrice initialized to -1)
+            if (ABSPrice < 0)
+            {
+                convertToABS();
+            }
+            print("Changed to ABS");
+        }
+        else
+        {
+            print("Changed to PLA");
+        }
+        
+        if (self.titleLabel.text?.contains("Price"))!
+        {
+            print("Already contains price...");
+            
+        }
+        else
+        {
+            //self.titleLabel.text = self.titleLabel.text! + "\n Price: " + printTypes[row];
+        }
+    }
+    
+    func convertToABS()
+    {
+        if let Product = self.ProductItem
+        {
+            let priceConverted = NumberFormatter().number(from: Product.price)?.doubleValue;
+            let newPrice = priceConverted! * 1.1;
+            ABSPrice = newPrice;
+            let stringVersion:String = "\(newPrice)";
+            Product.price = stringVersion;
+            // when you set it back it will go over must be careful
+            print("new price is ... \(newPrice)");
+            print("product price is now  .....   \(Product.price!)");
+            // converts to ABS correctly!
+        }
     }
     
     //func setFavouriteButton() {
@@ -61,7 +105,7 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         // Update the user interface for the detail item.
         if let Product = self.ProductItem {
             self.ProductImage.image = Product.image
-            self.titleLabel.text = Product.name + "\n Product ID: " + Product.uid + "\n Product Price: " + Product.price!;
+            self.titleLabel.text = Product.name + "\n Product ID: " + Product.uid + "\n Price: " + Product.price;
             //self.setFavouriteButton()
         }
     }
