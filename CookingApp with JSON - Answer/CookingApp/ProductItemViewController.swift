@@ -45,13 +45,21 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         // painting price is in effect, turn it off
         if (paintingAdded)
         {
+            resetPaintingCharge();
+            paintingButton.setTitle("Add Painting", for: .normal);
+            configureView();
+            paintingAdded = false;
+            PickerView.isHidden = false;
             
         }
-        else // painting price is not in effect yet
+        else // painting price is not in effect yet,
         {
             addPaintingCost();
             paintingButton.setTitle("Remove Painting", for: .normal)
             configureView();
+            paintingAdded = true;
+            // turn off the picker until this is off
+            PickerView.isHidden = true;
         }
         
     }
@@ -85,7 +93,15 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         
         if let Product = self.ProductItem
         {
+            let paintingPriceConverted = NumberFormatter().number(from: Product.price)?.doubleValue;
             
+            let paintingPriceOriginal = paintingPriceConverted! / 1.55; // / 1.55
+            
+            print("Original price was ... \(paintingPriceOriginal)");
+            
+            let originalStringVersion:String = "\(paintingPriceOriginal)";
+            
+            Product.price = originalStringVersion;
         }
     }
     
@@ -109,6 +125,9 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
     // To enable pickerview changing
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
+        // hide the buttons during the transition, make them appear after it..
+        paintingButton.isEnabled = false;
+        paintingButton.isHidden = true;
         // Changing from PLA to ABS or ABS to ABS
         if (printTypes[row] == "ABS")
         {
@@ -127,7 +146,7 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
             
             configureView();
             
-            print("Changed to ABS");
+            //print("Changed to ABS");
         }
         else // Changed to PLA?
         {
@@ -146,8 +165,13 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
             
             configureView();
             
-            print("Changed to PLA");
+            //print("Changed to PLA");
         }
+        
+        //after computations are done, make it available again
+        // Testing on actual iPhone!
+        paintingButton.isEnabled = true;
+        paintingButton.isHidden = false;
         
     }
     
@@ -217,6 +241,9 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         // Do any additional setup after loading the view, typically from a nib.
         self.configureView()
         initiatePrice();
+        
+        let titleLabelX = titleLabel.center.x;
+        paintingButton.center.x = (titleLabelX - 8);
         
     }
     
