@@ -22,7 +22,6 @@ class FavouritesViewController: DetailViewController, UICollectionViewDataSource
         
         self.collectionView!.dataSource = self
         self.collectionView!.delegate = self
-        print("Number of cart items = \(model.cartList.count)");
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +37,8 @@ class FavouritesViewController: DetailViewController, UICollectionViewDataSource
         //print("top of the prepare");
         
         //print(segue.identifier);
+        
+        print("original segue identifier... " + segue.identifier!);
         
         // Find out what row was selected
         let indexPath = self.collectionView?.indexPath(for: sender as! Cell)
@@ -60,6 +61,7 @@ class FavouritesViewController: DetailViewController, UICollectionViewDataSource
         detailView.navigationItem.leftItemsSupplementBackButton = true
         
         
+        detailView.restrictedMode = true;
     }
     
     // MARK: UICollectionView Data Source

@@ -30,6 +30,8 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
     
     var ABSPrice:Double = -1;
     
+    var restrictedMode:Bool = false;
+    
     var originalPLAPrice:Double = -1;
     
     var ProductItem: Product? {
@@ -126,8 +128,7 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         // hide the buttons during the transition, make them appear after it..
-        paintingButton.isEnabled = false;
-        paintingButton.isHidden = true;
+        paintingButton.isUserInteractionEnabled = false;
         // Changing from PLA to ABS or ABS to ABS
         if (printTypes[row] == "ABS")
         {
@@ -170,8 +171,7 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         
         //after computations are done, make it available again
         // Testing on actual iPhone!
-        paintingButton.isEnabled = true;
-        paintingButton.isHidden = false;
+        paintingButton.isUserInteractionEnabled = true;
         
     }
     
@@ -236,30 +236,11 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        // Find out what row was selected
-        //let indexPath = self.collectionView?.indexPath(for: sender as! Cell)
-        
-        //sender as? NSIndexPath
-        
-        // Grab the detail view
-        let detailView = (segue.destination as! UINavigationController).topViewController as! ProductItemViewController
-        
-        // Get the selected cell's image
-        //let Product = model.cartList[indexPath!.row]
-        
-        
-        
-        // Pass the content to the detail view
-        //detailView.ProductItem = Product
-        
-        // Set up navigation on detail view
-        detailView.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
-        detailView.navigationItem.leftItemsSupplementBackButton = true
-        
-        print("Segue Identifier is... " + segue.identifier!);
-        
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        print("test");
+        print("segue identifier is " + segue.identifier!);
         
     }
     
@@ -271,6 +252,13 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         
         let titleLabelX = titleLabel.center.x;
         paintingButton.center.x = (titleLabelX - 8);
+        
+        if (restrictedMode)
+        {
+            PickerView.isUserInteractionEnabled = false;
+            favouriteButton.isHidden = true;
+            paintingButton.isHidden = true;
+        }
     
     }
     
