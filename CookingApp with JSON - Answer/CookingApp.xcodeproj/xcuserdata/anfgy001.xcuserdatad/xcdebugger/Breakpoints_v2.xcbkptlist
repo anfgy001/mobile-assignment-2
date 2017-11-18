@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CookingApp/ProductItemViewController.swift"
-            timestampString = "532671893.40405"
+            timestampString = "532672241.224693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "convertToABS()"
             landmarkType = "7">
          </BreakpointContent>

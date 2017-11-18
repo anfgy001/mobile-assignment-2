@@ -55,11 +55,19 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         if (printTypes[row] == "ABS")
         {
             // Only change the price to ABS if it hasn't been done before
+            // This means it hasn't been changed before
             // (ABSPrice initialized to -1)
             if (ABSPrice < 0)
             {
                 convertToABS();
             }
+            else //ABSPrice is already stored, refer to it
+            {
+                
+            }
+            
+            configureView();
+            
             print("Changed to ABS");
         }
         else
@@ -78,6 +86,7 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         }
     }
     
+    // for converting to ABS and finding the correct ABS printing price
     func convertToABS()
     {
         if let Product = self.ProductItem
@@ -93,7 +102,7 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
             // converts to ABS correctly!
         }
     }
-    
+        
     //func setFavouriteButton() {
     //    favouriteButton.setTitle("+", for: UIControlState())
     //    if (self.ProductItem!.favourite) {
