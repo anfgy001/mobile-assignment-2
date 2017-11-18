@@ -22,7 +22,11 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
     
     @IBOutlet weak var favouriteButton: UIButton!
     
+    @IBOutlet weak var paintingButton: UIButton!
+    
     var changedToABS:Bool = false;
+    
+    var paintingAdded:Bool = false;
     
     var ABSPrice:Double = -1;
     
@@ -31,6 +35,57 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
     var ProductItem: Product? {
         didSet {
             // Update the view.
+        }
+    }
+    
+    
+    
+    @IBAction func paintingStatusChange(_ sender: Any)
+    {
+        // painting price is in effect, turn it off
+        if (paintingAdded)
+        {
+            
+        }
+        else // painting price is not in effect yet
+        {
+            addPaintingCost();
+            paintingButton.setTitle("Remove Painting", for: .normal)
+            configureView();
+        }
+        
+    }
+    
+    // add the cost of painting +55%
+    func addPaintingCost()
+    {
+        if let Product = self.ProductItem
+        {
+            // get double of current price
+            let priceConverted = NumberFormatter().number(from: Product.price)?.doubleValue;
+            
+            let priceAfterPaintingAdded = priceConverted! * 1.55;
+            
+            let withPaintingStringVersion:String = "\(priceAfterPaintingAdded)";
+            // painting price converts successfully
+            print("newest cost w/ painting = \(withPaintingStringVersion)");
+            
+            // change the new price back
+            
+            Product.price = withPaintingStringVersion;
+
+        }
+        
+    }
+    
+    // reset the cost without having the painting charge -55%
+    func resetPaintingCharge()
+    {
+        // manual removal
+        
+        if let Product = self.ProductItem
+        {
+            
         }
     }
     

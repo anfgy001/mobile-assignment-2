@@ -96,11 +96,11 @@
                                 <rect key="frame" x="0.0" y="22" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Arm-wq-HPj">
-                                            <rect key="frame" x="15" y="0.0" width="384" height="43.666666666666664"/>
+                                            <rect key="frame" x="15" y="0.0" width="384" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -280,13 +280,28 @@
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fYQ-q6-8sg">
-                                <rect key="frame" x="226" y="637" width="168" height="79"/>
+                                <rect key="frame" x="20" y="559" width="168" height="79"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="N3O-Pj-BeQ" id="zMI-kO-p7k"/>
                                     <outlet property="delegate" destination="N3O-Pj-BeQ" id="BDC-Qs-g6Q"/>
                                 </connections>
                             </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Printing Types" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CC4-RZ-fJx">
+                                <rect key="frame" x="49" y="537" width="110" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ONu-R7-JSY">
+                                <rect key="frame" x="249" y="644" width="87" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Painting"/>
+                                <connections>
+                                    <action selector="paintingStatusChange:" destination="N3O-Pj-BeQ" eventType="touchUpInside" id="jdK-gm-OOZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.3252929151058197" green="0.72314411401748657" blue="0.8943219780921936" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -306,11 +321,12 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Recipe" id="HDx-nd-XpP"/>
+                    <navigationItem key="navigationItem" title="Product" id="HDx-nd-XpP"/>
                     <connections>
                         <outlet property="PickerView" destination="fYQ-q6-8sg" id="J4Z-4n-zu3"/>
                         <outlet property="ProductImage" destination="IV2-dR-Mt1" id="D6c-Sw-BIT"/>
                         <outlet property="favouriteButton" destination="7zS-4P-Q63" id="z0R-tk-SWR"/>
+                        <outlet property="paintingButton" destination="ONu-R7-JSY" id="Z9I-Tp-1YU"/>
                         <outlet property="titleLabel" destination="ORz-bQ-tGi" id="W5u-TD-0nz"/>
                     </connections>
                 </viewController>
