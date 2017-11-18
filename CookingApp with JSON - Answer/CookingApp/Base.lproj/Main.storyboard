@@ -192,7 +192,7 @@
                                         <connections>
                                             <outlet property="cellImageView" destination="AqI-A6-dn3" id="LsT-oN-uVB"/>
                                             <outlet property="cellLabel" destination="d0K-el-XRW" id="9Tu-up-lng"/>
-                                            <segue destination="gag-91-bYp" kind="showDetail" id="RPr-zO-fWV"/>
+                                            <segue destination="gag-91-bYp" kind="showDetail" identifier="ProductList" id="RPr-zO-fWV"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -395,7 +395,7 @@
                                         <connections>
                                             <outlet property="cellImageView" destination="DCM-rK-DMy" id="y5W-Z8-Lee"/>
                                             <outlet property="cellLabel" destination="JWC-Lt-fcM" id="yZH-6s-6hD"/>
-                                            <segue destination="gag-91-bYp" kind="showDetail" id="apw-OR-LH2"/>
+                                            <segue destination="gag-91-bYp" kind="showDetail" identifier="CartItem" id="apw-OR-LH2"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -545,7 +545,7 @@
         <image name="Title.png" width="330" height="35"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="apw-OR-LH2"/>
         <segue reference="sTK-hf-Urf"/>
+        <segue reference="RPr-zO-fWV"/>
     </inferredMetricsTieBreakers>
 </document>

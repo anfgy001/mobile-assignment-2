@@ -1,4 +1,4 @@
-//
+ //
 //  ProductViewController.swift
 //  Mobile Application Enterprise Development Assignment 2
 //
@@ -236,6 +236,33 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // Find out what row was selected
+        //let indexPath = self.collectionView?.indexPath(for: sender as! Cell)
+        
+        //sender as? NSIndexPath
+        
+        // Grab the detail view
+        let detailView = (segue.destination as! UINavigationController).topViewController as! ProductItemViewController
+        
+        // Get the selected cell's image
+        //let Product = model.cartList[indexPath!.row]
+        
+        
+        
+        // Pass the content to the detail view
+        //detailView.ProductItem = Product
+        
+        // Set up navigation on detail view
+        detailView.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
+        detailView.navigationItem.leftItemsSupplementBackButton = true
+        
+        print("Segue Identifier is... " + segue.identifier!);
+        
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -244,8 +271,9 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         
         let titleLabelX = titleLabel.center.x;
         paintingButton.center.x = (titleLabelX - 8);
-        
+    
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

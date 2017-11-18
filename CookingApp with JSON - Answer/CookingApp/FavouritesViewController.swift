@@ -33,7 +33,11 @@ class FavouritesViewController: DetailViewController, UICollectionViewDataSource
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        print("top of the prepare");
+        //print("In the item as it's in cart");
+        
+        //print("top of the prepare");
+        
+        //print(segue.identifier);
         
         // Find out what row was selected
         let indexPath = self.collectionView?.indexPath(for: sender as! Cell)

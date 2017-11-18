@@ -73,7 +73,6 @@ class Model {
                         newProduct.price = json[count]["price"].string;
                         let imgURL = json[count]["image"].string!
                         
-                        print("new product price is ");
                         self.addItemToProducts(newProduct, imageURL: imgURL)
                     }
                 }
@@ -97,7 +96,6 @@ class Model {
             storedProducts = results as! [NSManagedObject]
             
             if (storedProducts.count > 0) {
-                print("Stored products count is \(storedProducts.count)");
                 for index in 0 ... storedProducts.count - 1 {
                     let binaryData = storedProducts[index].value(forKey: "image") as! Data
                     
@@ -174,7 +172,6 @@ class Model {
     
     func loadImage(_ imageURL: String) -> UIImage
     {
-        print("gets here")
         var image: UIImage!
         
         if let url = NSURL(string: imageURL) {

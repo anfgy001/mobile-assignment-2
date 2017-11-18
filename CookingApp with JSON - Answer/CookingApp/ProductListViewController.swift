@@ -26,6 +26,8 @@ class ProductListViewController: DetailViewController, UICollectionViewDataSourc
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        //print("original segue identifier... " + segue.identifier!);
+        
         // Find out what row was selected
         let indexPath = self.collectionView?.indexPath(for: sender as! Cell)
         
@@ -44,6 +46,7 @@ class ProductListViewController: DetailViewController, UICollectionViewDataSourc
             detailView.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
             detailView.navigationItem.leftItemsSupplementBackButton = true
         
+        print("last segue identifier... " + segue.identifier!);
         
     }
     
