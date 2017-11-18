@@ -34,7 +34,7 @@ class Model {
         self.loadProducts()
     }
     
-    var cartList: [Product] { //aka favourites
+    var cartList: [Product] { 
         get {
             var selectedProducts = [Product]()
             

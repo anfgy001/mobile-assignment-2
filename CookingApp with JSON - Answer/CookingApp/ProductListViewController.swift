@@ -27,9 +27,7 @@ class ProductListViewController: DetailViewController, UICollectionViewDataSourc
         // Mark: Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        print("original segue identifier... " + segue.identifier!);
-        
+                
         // Find out what row was selected
         let indexPath = self.collectionView?.indexPath(for: sender as! Cell)
         

@@ -13,18 +13,31 @@ class CheckoutViewController : DetailViewController {
     
     let model = SingletonManager.model
     
+    
+    
+    @IBOutlet weak var numberOfProductsLabel: UILabel!
+    
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        self.configureView()
-        //print("You have  \(model.cartList.count) items");
+        super.viewDidLoad();
+        self.configureView();
+        let cartListNumber:Int = model.cartList.count;
+        numberOfProductsLabel.text = numberOfProductsLabel.text! + " \(cartListNumber)";
+        reviewCart();
     }
     
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     override func configureView()
+    {
+        
+    }
+    
+    func reviewCart()
     {
         
     }

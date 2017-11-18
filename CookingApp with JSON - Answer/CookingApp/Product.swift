@@ -16,6 +16,8 @@ class Product: NSObject {
     var uid: String!
     var price: String!
     var addedToCart = false;
+    var ABSPrinting:Bool = false;
+    var ABSPrintedCharge:Double = -1;
     
     override init() {
     }

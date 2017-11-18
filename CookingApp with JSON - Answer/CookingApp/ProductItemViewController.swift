@@ -78,7 +78,6 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
             
             let withPaintingStringVersion:String = "\(priceAfterPaintingAdded)";
             // painting price converts successfully
-            print("newest cost w/ painting = \(withPaintingStringVersion)");
             
             // change the new price back
             
@@ -130,13 +129,15 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         // hide the buttons during the transition, make them appear after it..
         paintingButton.isUserInteractionEnabled = false;
         // Changing from PLA to ABS or ABS to ABS
-        if (printTypes[row] == "ABS")
+        if (printTypes[row] == "ABS" && (ProductItem?.ABSPrinting == false))
         {
             // Only change the price to ABS if it hasn't been done before
             // This means it hasn't been changed before
             // (ABSPrice initialized to -1)
-            if (ABSPrice < 0)
+            if (ABSPrice < 0 && ProductItem?.ABSPrintedCharge == -1)
             {
+                print("CONVERTING ABS AGAIN");
+                print("ABS PRICE IS LESS THAN 0")
                 convertToABS();
             }
             else //ABSPrice is already stored, refer to it
@@ -147,12 +148,20 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
             
             configureView();
             
+            ProductItem?.ABSPrinting = true;
+            
             //print("Changed to ABS");
         }
-        else // Changed to PLA?
+        else if (printTypes[row] == "PLA" && (ProductItem?.ABSPrinting == true)) // Changed to PLA
         {
-            
-            if(originalPLAPrice < 0)
+            print("originalPLAPrice is \(originalPLAPrice)");
+            if (originalPLAPrice == ProductItem?.ABSPrintedCharge)
+            {
+                print("ERROR! ************ THE PLA PRICE IS THE REAL ABS PRICE! *******************");
+                originalPLAPrice = originalPLAPrice / 1.10;
+                convertPLAPrice();
+            }
+            else if(originalPLAPrice < 0)
             {
                 print("OriginalPLAPrice hasn't been already converted... should be")
                 initiatePrice();
@@ -167,6 +176,7 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
             configureView();
             
             //print("Changed to PLA");
+            ProductItem?.ABSPrinting = false;
         }
         
         //after computations are done, make it available again
@@ -179,7 +189,7 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
     {
         if let Product = self.ProductItem
         {
-            let absStringVersion:String = "\(ABSPrice)";
+            let absStringVersion:String = "\(Product.ABSPrintedCharge)";
             Product.price = absStringVersion;
         }
     }
@@ -201,6 +211,7 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
             let priceConverted = NumberFormatter().number(from: Product.price)?.doubleValue;
             let newPrice = priceConverted! * 1.1;
             ABSPrice = newPrice;
+            ProductItem?.ABSPrintedCharge = newPrice;
             let stringVersion:String = "\(newPrice)";
             Product.price = stringVersion;
             // when you set it back it will go over must be careful
@@ -239,8 +250,7 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        print("test");
-        print("segue identifier is " + segue.identifier!);
+        
         
     }
     
@@ -253,13 +263,34 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         let titleLabelX = titleLabel.center.x;
         paintingButton.center.x = (titleLabelX - 8);
         
-        if (restrictedMode)
+        if (restrictedMode) // this is being viewed by the cart
         {
             PickerView.isUserInteractionEnabled = false;
             favouriteButton.isHidden = true;
             paintingButton.isHidden = true;
+            //self.picker.selectRow(8, inComponent: 0, animated: false) at component 8
+            
+            if(ProductItem?.ABSPrinting)!
+            {
+                self.PickerView.selectRow(1, inComponent: 0, animated: false)
+            }
+            else
+            {
+                self.PickerView.selectRow(0, inComponent: 0, animated: false);
+            }
+            
         }
-    
+        
+        if(ProductItem?.ABSPrinting)!
+        {
+            self.PickerView.selectRow(1, inComponent: 0, animated: false);
+             print("This is using ABS Printing...");
+        }
+        else
+        {
+            self.PickerView.selectRow(0, inComponent: 0, animated: false);
+            print("This is using PLA Printing...")
+        }
     }
     
     

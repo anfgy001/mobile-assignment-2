@@ -38,9 +38,7 @@ class FavouritesViewController: DetailViewController, UICollectionViewDataSource
         //print("top of the prepare");
         
         //print(segue.identifier);
-        
-        print("original segue identifier... " + segue.identifier!);
-        
+            
         // Find out what row was selected
         let indexPath = self.collectionView?.indexPath(for: sender as! Cell)
         

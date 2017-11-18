@@ -531,14 +531,26 @@
                     <view key="view" contentMode="scaleToFill" id="Oem-2w-urU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of Products: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkD-jJ-Nrm">
+                                <rect key="frame" x="20" y="82" width="208" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="0.32488384040000001" green="0.72212303050000004" blue="0.89306351839999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Checkout" id="5Vu-8t-rZe"/>
+                    <connections>
+                        <outlet property="numberOfProductsLabel" destination="fkD-jJ-Nrm" id="5DV-S7-HYh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1F7-Sd-dLB" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3699" y="872"/>
+            <point key="canvasLocation" x="3698.5507246376815" y="871.46739130434787"/>
         </scene>
     </scenes>
     <resources>
