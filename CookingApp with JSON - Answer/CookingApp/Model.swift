@@ -17,16 +17,17 @@ class Model {
     var storedProducts = [NSManagedObject]()
     
     init() {
-        segueArray.append("Home")
-        segueArray.append("Products")
-        segueArray.append("Cart")
+        segueArray.append("Home");
+        segueArray.append("Products");
+        segueArray.append("Cart");
+        segueArray.append("Checkout");
         
         //segueArray.append("Favourites")
         
-        segueDictionary["Home"] = UIImage(named: "home")
-        segueDictionary["Products"] = UIImage(named: "products")
+        segueDictionary["Home"] = UIImage(named: "home");
+        segueDictionary["Products"] = UIImage(named: "products");
         segueDictionary["Cart"] = UIImage(named: "cart");
-        
+        segueDictionary["Checkout"] = UIImage(named: "checkout");
         
         self.refreshProducts()
         

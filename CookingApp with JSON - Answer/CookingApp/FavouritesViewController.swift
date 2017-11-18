@@ -16,6 +16,7 @@ class FavouritesViewController: DetailViewController, UICollectionViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureCollectionView()
+        //print("You have  \(model.cartList.count) items");
     }
     
     func configureCollectionView() {

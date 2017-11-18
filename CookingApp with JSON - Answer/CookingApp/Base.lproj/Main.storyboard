@@ -96,11 +96,11 @@
                                 <rect key="frame" x="0.0" y="22" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Arm-wq-HPj">
-                                            <rect key="frame" x="15" y="0.0" width="384" height="43.666666666666664"/>
+                                            <rect key="frame" x="15" y="0.0" width="384" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -124,7 +124,7 @@
                         <segue destination="wBQ-5o-6Qm" kind="showDetail" identifier="Cart" id="PtL-IZ-e1y"/>
                         <segue destination="jjP-B8-Vd9" kind="showDetail" identifier="Search" id="rxc-to-Ol0"/>
                         <segue destination="XsB-O5-nvd" kind="showDetail" id="WqW-0n-b2Q"/>
-                        <segue destination="Eet-er-jan" kind="showDetail" id="yos-AX-8T3"/>
+                        <segue destination="Eet-er-jan" kind="showDetail" identifier="checkout" id="yos-AX-8T3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
@@ -523,7 +523,7 @@
         <!--Detail-->
         <scene sceneID="VHo-ke-A6Z">
             <objects>
-                <viewController title="Detail" id="1df-Wl-F49" customClass="DetailViewController" customModule="CookingApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Detail" id="1df-Wl-F49" customClass="CheckoutViewController" customModule="CookingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ntG-yM-eNl"/>
                         <viewControllerLayoutGuide type="bottom" id="zZY-dr-8km"/>
@@ -546,6 +546,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="sTK-hf-Urf"/>
-        <segue reference="RPr-zO-fWV"/>
+        <segue reference="apw-OR-LH2"/>
     </inferredMetricsTieBreakers>
 </document>
