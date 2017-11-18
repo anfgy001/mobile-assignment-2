@@ -26,6 +26,8 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
     
     var ABSPrice:Double = -1;
     
+    var originalPLAPrice:Double = -1;
+    
     var ProductItem: Product? {
         didSet {
             // Update the view.
@@ -52,6 +54,7 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
     // To enable pickerview changing
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
+        // Changing from PLA to ABS or ABS to ABS
         if (printTypes[row] == "ABS")
         {
             // Only change the price to ABS if it hasn't been done before
@@ -63,26 +66,51 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
             }
             else //ABSPrice is already stored, refer to it
             {
-                
+                print("Converting again to ABS...");
+                convertABSPrice();
             }
             
             configureView();
             
             print("Changed to ABS");
         }
-        else
+        else // Changed to PLA?
         {
+            
+            if(originalPLAPrice < 0)
+            {
+                print("OriginalPLAPrice hasn't been already converted... should be")
+                initiatePrice();
+            }
+            else
+            {
+                print("Converting back to PLA...");
+                convertPLAPrice();
+                
+            }
+            
+            configureView();
+            
             print("Changed to PLA");
         }
         
-        if (self.titleLabel.text?.contains("Price"))!
+    }
+    
+    func convertABSPrice()
+    {
+        if let Product = self.ProductItem
         {
-            print("Already contains price...");
-            
+            let absStringVersion:String = "\(ABSPrice)";
+            Product.price = absStringVersion;
         }
-        else
+    }
+    
+    func convertPLAPrice()
+    {
+        if let Product = self.ProductItem
         {
-            //self.titleLabel.text = self.titleLabel.text! + "\n Price: " + printTypes[row];
+            let plaStringVersion:String = "\(originalPLAPrice)";
+            Product.price = plaStringVersion;
         }
     }
     
@@ -97,9 +125,19 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
             let stringVersion:String = "\(newPrice)";
             Product.price = stringVersion;
             // when you set it back it will go over must be careful
-            print("new price is ... \(newPrice)");
-            print("product price is now  .....   \(Product.price!)");
+            print("Initially converted to ABS...");
             // converts to ABS correctly!
+        }
+    }
+    
+    // initiate the PLA price at the beginning
+    func initiatePrice()
+    {
+        if let Product = self.ProductItem
+        {
+            let PLAConverted = NumberFormatter().number(from: Product.price)?.doubleValue;
+            originalPLAPrice = PLAConverted!;
+            
         }
     }
         
@@ -123,6 +161,8 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.configureView()
+        initiatePrice();
+        
     }
     
     override func didReceiveMemoryWarning() {
