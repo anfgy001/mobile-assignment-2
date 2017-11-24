@@ -66,7 +66,6 @@ class Model {
                 
                     for count in 0...json.count - 1
                     {
-                        print(count);
                         let newProduct = Product()
                         newProduct.name = json[count]["name"].string
                         //newProduct.details = json[count]["Product"].string
@@ -112,8 +111,6 @@ class Model {
                     
                     let loadedProduct = Product(uid: uid, name: name, image: image!, price: price);
                     
-                    print("The price is " + price);
-                    
                     Products.append(loadedProduct)
                 }
             }
@@ -126,7 +123,7 @@ class Model {
     
     func checkForProduct(_ searchItem: Product) -> Int {
         var targetIndex = -1
-        print(Products.count);
+        
         if (Products.count > 0) {
             for index in 0 ... Products.count - 1 {
                 if (Products[index].uid.isEqual(searchItem.uid)) {
@@ -139,7 +136,6 @@ class Model {
     }
     
     func addItemToProducts(_ newProduct: Product!, imageURL: String) {
-        //print(checkForProduct(newProduct));
         if (checkForProduct(newProduct) == -1)
         {
             let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext

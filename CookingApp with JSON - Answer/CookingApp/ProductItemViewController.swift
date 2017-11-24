@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductItemViewController: DetailViewController, UIPickerViewDataSource, UIPickerViewDelegate
+class ProductItemViewController: DetailViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate
     {
     
     let model = SingletonManager.model
@@ -24,6 +24,10 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
     
     @IBOutlet weak var paintingButton: UIButton!
     
+    @IBOutlet weak var qtyLabel: UILabel!
+    
+    @IBOutlet weak var QtyStepper: UIStepper!
+    
     var changedToABS:Bool = false;
     
     var paintingAdded:Bool = false;
@@ -34,12 +38,29 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
     
     var originalPLAPrice:Double = -1;
     
+    var quantity:Int = -1;
+    
     var ProductItem: Product? {
         didSet {
             // Update the view.
         }
     }
     
+    @IBAction func stepperAction(_ sender: Any) {
+        
+        qtyLabel.text = "Qty: ";
+        let theVal = Int(QtyStepper.value);
+        qtyLabel.text = qtyLabel.text! + " \(theVal)";
+        if (theVal == 0)
+        {
+            favouriteButton.isHidden = true;
+            paintingButton.isHidden = true;
+            return;
+        }
+        favouriteButton.isHidden = false;
+        paintingButton.isHidden = false;
+        quantity = theVal;
+    }
     
     
     @IBAction func paintingStatusChange(_ sender: Any)
@@ -98,6 +119,7 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
             
             let paintingPriceOriginal = paintingPriceConverted! / 1.55; // / 1.55
             
+            print()
             print("Original price was ... \(paintingPriceOriginal)");
             
             let originalStringVersion:String = "\(paintingPriceOriginal)";
@@ -142,6 +164,7 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
             }
             else //ABSPrice is already stored, refer to it
             {
+                print()
                 print("Converting again to ABS...");
                 convertABSPrice();
             }
@@ -154,20 +177,22 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         }
         else if (printTypes[row] == "PLA" && (ProductItem?.ABSPrinting == true)) // Changed to PLA
         {
+            print()
             print("originalPLAPrice is \(originalPLAPrice)");
             if (originalPLAPrice == ProductItem?.ABSPrintedCharge)
             {
-                print("ERROR! ************ THE PLA PRICE IS THE REAL ABS PRICE! *******************");
                 originalPLAPrice = originalPLAPrice / 1.10;
                 convertPLAPrice();
             }
             else if(originalPLAPrice < 0)
             {
+                print()
                 print("OriginalPLAPrice hasn't been already converted... should be")
                 initiatePrice();
             }
             else
             {
+                print()
                 print("Converting back to PLA...");
                 convertPLAPrice();
                 
@@ -284,12 +309,10 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         if(ProductItem?.ABSPrinting)!
         {
             self.PickerView.selectRow(1, inComponent: 0, animated: false);
-             print("This is using ABS Printing...");
         }
         else
         {
             self.PickerView.selectRow(0, inComponent: 0, animated: false);
-            print("This is using PLA Printing...")
         }
     }
     

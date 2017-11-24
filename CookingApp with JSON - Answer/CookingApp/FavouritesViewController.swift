@@ -7,6 +7,7 @@
 
 import UIKit
 
+//CartViewController
 class FavouritesViewController: DetailViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     let model = SingletonManager.model
@@ -49,6 +50,10 @@ class FavouritesViewController: DetailViewController, UICollectionViewDataSource
         
         // Get the selected cell's image
         let Product = model.cartList[indexPath!.row]
+        // gets the latest instance, not any old instances
+        print("PRODUCT DETAILS " + Product.name + " IS THE PRODUCT NAME");
+        print();
+        print("PRODUCT IS ABS PRINTED? \(Product.ABSPrinting)");
 
         
         
