@@ -353,4 +353,22 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         self.model.updateProduct(self.ProductItem)
         
     }
+    
+    func urlBuilder()
+    {
+        var url = URL(string: "http://partiklezoo.com/3dprinting/?action=purchase");
+        let config = URLSessionConfiguration.default;
+        let session = URLSession(configuration: config);
+        let session = URLSession.sharedSession();
+        let task = session.dataTask(url);
+        {(data, response, error) -> Void in
+            if (error != nil)
+            {
+                return;
+            }
+            
+            // ... Work with data....
+        }.resume()
+        
+    }
 }

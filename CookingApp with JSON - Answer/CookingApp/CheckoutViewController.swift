@@ -22,6 +22,8 @@ class CheckoutViewController : DetailViewController {
     
     var globalTotal:Double = 0;
     
+    var globalItemNumber:Int = 0;
+    
     override func viewDidLoad() {
         super.viewDidLoad();
         self.configureView();
@@ -44,15 +46,9 @@ class CheckoutViewController : DetailViewController {
             let productABSPrinting = item.ABSPrinting;
             let productPainting = item.painted;
             let productPrice = item.price!;
+            let productQuantity = item.quantity;
             
-            print("-----------------------------------------");
-            print();
-            print("Product has name \(productName)")
-            print("Product has ID \(productID)");
-            print("Product has ABS printing \(productABSPrinting)");
-            print("Product price is  \(productPrice)");
-            print();
-            
+            globalItemNumber = globalItemNumber + productQuantity;
             
             
             cartDescriptionLabel.text = cartDescriptionLabel.text! + "\n--------------------------------------------------\nProduct Name is \(productName)\nProduct ID is \(productID)"
@@ -69,16 +65,25 @@ class CheckoutViewController : DetailViewController {
             {
                 cartDescriptionLabel.text = cartDescriptionLabel.text! + "\nProduct will be painted\n(55% extra charge)";
             }
+            
+            var thePriceDoubled = convertToDouble(theString: productPrice);
  
             cartDescriptionLabel.text = cartDescriptionLabel.text! + "\nProduct Price: \(productPrice)";
             
-            var thePriceDoubled = convertToDouble(theString: productPrice);
-            addToTotal(theDouble: thePriceDoubled);
+            cartDescriptionLabel.text = cartDescriptionLabel.text! + "\nQuantity: \(productQuantity)";
+            
+            var productPriceByQuantity:Double = productQuantityTotal(productPrice: thePriceDoubled, quantity: productQuantity);
+            
+            cartDescriptionLabel.text = cartDescriptionLabel.text! + "\nTotal Product Price: \(productPriceByQuantity)";
+            
+            
+            addToTotal(theDouble: productPriceByQuantity);
             
         }
          // work out totals
         var theTotal = totalToString();
         cartDescriptionLabel.text = cartDescriptionLabel.text! + "\n--------------------------------------------------\nTotal Price of Cart: \(theTotal)"
+        cartDescriptionLabel.text = cartDescriptionLabel.text! + "\nNumber of Total Items: \(globalItemNumber)";
         //reviewCart();
     }
     
@@ -91,6 +96,12 @@ class CheckoutViewController : DetailViewController {
     override func configureView()
     {
         
+    }
+    
+    func productQuantityTotal(productPrice: Double, quantity: Int) -> Double
+    {
+        let theResult = Double(quantity) * productPrice;
+        return theResult;
     }
     
     func convertToDouble(theString: String) -> Double
