@@ -46,8 +46,8 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         }
     }
     
-    @IBAction func stepperAction(_ sender: Any) {
-        
+    @IBAction func stepperAction(_ sender: Any)
+    {
         qtyLabel.text = "Qty: ";
         let theVal = Int(QtyStepper.value);
         qtyLabel.text = qtyLabel.text! + " \(theVal)";
@@ -293,6 +293,8 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
             PickerView.isUserInteractionEnabled = false;
             favouriteButton.isHidden = true;
             paintingButton.isHidden = true;
+            QtyStepper.isHidden = true;
+            qtyLabel.text = qtyLabel.text! +  " \(ProductItem!.quantity)";
             //self.picker.selectRow(8, inComponent: 0, animated: false) at component 8
             
             if(ProductItem?.ABSPrinting)!
@@ -305,6 +307,20 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
             }
             
         }
+        else
+        {
+            // previously chosen quantity item
+            if (ProductItem?.quantity != -1)
+            {
+                QtyStepper.value = Double(ProductItem!.quantity);
+                qtyLabel.text = qtyLabel.text! + "  \(ProductItem!.quantity)";
+            }
+            favouriteButton.isHidden = true;
+            paintingButton.isHidden = true;
+        }
+        
+        
+        
         
         if(ProductItem?.ABSPrinting)!
         {
@@ -322,9 +338,15 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func favouriteSelected(_ sender: AnyObject) {
+    @IBAction func favouriteSelected(_ sender: AnyObject)
+    {
+        if (!restrictedMode) // when choosing
+        {
+            self.ProductItem!.quantity = quantity;
+        }
         
         self.ProductItem!.addedToCart = true
+        
         print("\(self.ProductItem!.name!) has been added to your cart");
 
         self.model.updateProduct(self.ProductItem)
