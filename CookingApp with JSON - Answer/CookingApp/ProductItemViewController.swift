@@ -352,23 +352,68 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
 
         self.model.updateProduct(self.ProductItem)
         
+        urlConfig();
+        
     }
     
     func urlBuilder()
     {
-        var url = URL(string: "http://partiklezoo.com/3dprinting/?action=purchase");
+        
+    }
+    
+    func productQuantityTotal(productPrice: Double, quantity: Int) -> Double
+    {
+        let theResult = Double(quantity) * productPrice;
+        return theResult;
+    }
+    
+    func urlConfig()
+    {
+        var urlString = "http://partiklezoo.com/3dprinting/?action=purchase";
+        
+        urlString = urlString + "&\(ProductItem!.uid!)=\(ProductItem!.quantity)";
+        
+        var theProductTotal = productQuantityTotal(productPrice: Double(ProductItem!.price)!, quantity: ProductItem!.quantity);
+        
+        urlString = urlString + "&total=\(theProductTotal)";
+        
+        if (ProductItem!.ABSPrinting)
+        {
+            urlString = urlString + "&material=abs";
+        }
+        else
+        {
+            urlString = urlString + "&material=pla";
+        }
+        
+        urlString = urlString + "&painting=\(ProductItem!.painted)";
+        print();
+        print(urlString);
+        
+        var url = NSURL(string: urlString);
         let config = URLSessionConfiguration.default;
+        config.isDiscretionary = true;
         let session = URLSession(configuration: config);
-        let session = URLSession.sharedSession();
-        let task = session.dataTask(url);
-        {(data, response, error) -> Void in
-            if (error != nil)
+        //let session = URLSession.sharedSession();
+        let task = session.dataTask(with: url! as URL, completionHandler:
+            {(data, response, error) in
+            do {
+                let json = try JSON(data: data!)
+                
+                print("JSON COUNT IS ");
+                print(json.count);
+                
+                print(json["success"].string!)
+            }
+            catch let error as NSError
             {
-                return;
+                print("Could not convert. \(error), \(error.userInfo)");
             }
             
+            
             // ... Work with data....
-        }.resume()
+        })
+        task.resume()
         
     }
 }
