@@ -18,6 +18,7 @@ class Product: NSObject {
     var addedToCart = false;
     var ABSPrinting:Bool = false;
     var ABSPrintedCharge:Double = -1;
+    var painted:Bool = false;
     var quantity:Int = -1; 
     
     override init() {

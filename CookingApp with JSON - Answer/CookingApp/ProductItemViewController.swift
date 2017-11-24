@@ -343,6 +343,7 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         if (!restrictedMode) // when choosing
         {
             self.ProductItem!.quantity = quantity;
+            self.ProductItem!.painted = paintingAdded;
         }
         
         self.ProductItem!.addedToCart = true
