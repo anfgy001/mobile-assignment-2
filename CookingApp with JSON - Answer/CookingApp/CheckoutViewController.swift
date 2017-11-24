@@ -69,16 +69,16 @@ class CheckoutViewController : DetailViewController {
             {
                 cartDescriptionLabel.text = cartDescriptionLabel.text! + "\nProduct will be painted\n(55% extra charge)";
             }
-            
+ 
             cartDescriptionLabel.text = cartDescriptionLabel.text! + "\nProduct Price: \(productPrice)";
             
-            //var thePriceDoubled = convertToDouble(theString: productPrice);
-            //addToTotal(theDouble: thePriceDoubled);
+            var thePriceDoubled = convertToDouble(theString: productPrice);
+            addToTotal(theDouble: thePriceDoubled);
             
         }
          // work out totals
-        //var theTotal = totalToString();
-        //cartDescriptionLabel.text = cartDescriptionLabel.text! + "\n--------------------------------------------------\nTotal Price of Cart: \(theTotal)"
+        var theTotal = totalToString();
+        cartDescriptionLabel.text = cartDescriptionLabel.text! + "\n--------------------------------------------------\nTotal Price of Cart: \(theTotal)"
         //reviewCart();
     }
     
