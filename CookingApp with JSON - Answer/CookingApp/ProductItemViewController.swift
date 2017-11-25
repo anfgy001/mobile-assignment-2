@@ -28,6 +28,8 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
     
     @IBOutlet weak var QtyStepper: UIStepper!
     
+    var red:Bool = false;
+        
     var changedToABS:Bool = false;
     
     var paintingAdded:Bool = false;
@@ -39,6 +41,9 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
     var originalPLAPrice:Double = -1;
     
     var quantity:Int = -1;
+    
+    
+    @IBOutlet weak var errorMessageLabel: UILabel!
     
     var ProductItem: Product? {
         didSet {
@@ -284,6 +289,11 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         // Do any additional setup after loading the view, typically from a nib.
         self.configureView()
         initiatePrice();
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        let centreWidth = screenWidth / 2;
+        
+        errorMessageLabel.center.x = centreWidth + 7;
         
         let titleLabelX = titleLabel.center.x;
         paintingButton.center.x = (titleLabelX - 8);
@@ -319,9 +329,6 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
             paintingButton.isHidden = true;
         }
         
-        
-        
-        
         if(ProductItem?.ABSPrinting)!
         {
             self.PickerView.selectRow(1, inComponent: 0, animated: false);
@@ -355,10 +362,24 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
             
             self.ProductItem!.addedToCart = true
             self.model.updateProduct(self.ProductItem)
+            if (red)
+            {
+                errorMessageLabel.textColor! = UIColor.black;
+                red = false;
+            }
+            else
+            {
+                errorMessageLabel.textColor! = UIColor.red;
+                red = true;
+            }
+            errorMessageLabel.isHidden = false;
+            errorMessageLabel.text = "Product Added To Cart"
         }
         else // it was not correct with the server...
         {
-                // inform user that the product was not added to the server.
+            // inform user that the product was not added to the server.
+            errorMessageLabel.isHidden = false;
+            errorMessageLabel.text = "Warning: An error occurred\nSystem could not process request";
         }
     }
     
@@ -380,11 +401,11 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         
         if (ProductItem!.ABSPrinting)
         {
-            urlString = urlString + "&material=pla";
+            urlString = urlString + "&material=abs";
         }
         else
         {
-            urlString = urlString + "&material=abs";
+            urlString = urlString + "&material=pla";
         }
         
         urlString = urlString + "&painting=\(ProductItem!.painted)";

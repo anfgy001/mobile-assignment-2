@@ -14,7 +14,7 @@
         <scene sceneID="pY4-Hu-kfo">
             <objects>
                 <navigationController title="Master" id="RMx-3f-FxP" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="Pmd-2v-anx">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Pmd-2v-anx">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -236,7 +236,7 @@
         <scene sceneID="e1f-Ur-p3s">
             <objects>
                 <navigationController id="wBQ-5o-6Qm" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="XxI-Hc-4mW">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="XxI-Hc-4mW">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -316,6 +316,13 @@
                                     <action selector="stepperAction:" destination="N3O-Pj-BeQ" eventType="valueChanged" id="oCi-3Y-NKK"/>
                                 </connections>
                             </stepper>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C14-ux-R6z">
+                                <rect key="frame" x="6" y="476" width="459" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.13747174840000001" blue="0.083894435340000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.3252929151058197" green="0.72314411401748657" blue="0.8943219780921936" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -340,6 +347,7 @@
                         <outlet property="PickerView" destination="fYQ-q6-8sg" id="J4Z-4n-zu3"/>
                         <outlet property="ProductImage" destination="IV2-dR-Mt1" id="D6c-Sw-BIT"/>
                         <outlet property="QtyStepper" destination="s4U-M1-RQi" id="7MZ-XO-J2G"/>
+                        <outlet property="errorMessageLabel" destination="C14-ux-R6z" id="Rqz-Zt-aan"/>
                         <outlet property="favouriteButton" destination="7zS-4P-Q63" id="z0R-tk-SWR"/>
                         <outlet property="paintingButton" destination="ONu-R7-JSY" id="Z9I-Tp-1YU"/>
                         <outlet property="qtyLabel" destination="8VK-d7-Zmy" id="CNg-go-kc2"/>
@@ -354,7 +362,7 @@
         <scene sceneID="pkb-6S-UAI">
             <objects>
                 <navigationController id="gag-91-bYp" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="Mus-CO-Uch">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Mus-CO-Uch">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -439,7 +447,7 @@
         <scene sceneID="IXy-R5-f5g">
             <objects>
                 <navigationController id="jjP-B8-Vd9" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="kk4-wu-a9v">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="kk4-wu-a9v">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -455,7 +463,7 @@
         <scene sceneID="KAa-IA-fhO">
             <objects>
                 <navigationController id="XsB-O5-nvd" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="uTS-ta-aNd">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="uTS-ta-aNd">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
