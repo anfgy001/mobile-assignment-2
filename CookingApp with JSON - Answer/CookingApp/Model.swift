@@ -75,6 +75,7 @@ class Model {
                         //newProduct.details = json[count]["Product"].string
                         newProduct.uid = json[count]["uid"].string
                         newProduct.price = json[count]["price"].string;
+                        newProduct.category = json[count]["category"].string;
                         let imgURL = json[count]["image"].string!
                         
                         self.addItemToProducts(newProduct, imageURL: imgURL)
@@ -108,12 +109,13 @@ class Model {
                     let name = storedProducts[index].value(forKey: "name") as! String
                     let uid = storedProducts[index].value(forKey: "uid") as! String
                     let price = storedProducts[index].value(forKey: "price") as! String
+                    let category = storedProducts[index].value(forKey: "category") as! String;
                     
                     //let favourite = storedProducts[index].value(forKey: "favourite") as! Bool
                     
                     
                     
-                    let loadedProduct = Product(uid: uid, name: name, image: image!, price: price);
+                    let loadedProduct = Product(uid: uid, name: name, image: image!, price: price, category: category);
                     
                     Products.append(loadedProduct)
                 }
@@ -155,6 +157,7 @@ class Model {
             //ProductToAdd.setValue(newProduct.details, forKey: "details")
             ProductToAdd.setValue(newProduct.uid, forKey: "uid")
             ProductToAdd.setValue(newProduct.price, forKey: "price");
+            ProductToAdd.setValue(newProduct.category, forKey: "category");
             //ProductToAdd.setValue(newProduct.favourite, forKey: "favourite")
             
             do

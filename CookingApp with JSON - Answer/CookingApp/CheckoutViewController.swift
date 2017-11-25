@@ -12,7 +12,6 @@ class CheckoutViewController : DetailViewController {
     
     let model = SingletonManager.model
     
-    //checkout JSON Implementation
 
     
     @IBOutlet weak var numberOfProductsLabel: UILabel!

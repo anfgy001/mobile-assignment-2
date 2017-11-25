@@ -272,7 +272,7 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         // Update the user interface for the detail item.
         if let Product = self.ProductItem {
             self.ProductImage.image = Product.image
-            self.titleLabel.text = Product.name + "\n Product ID: " + Product.uid + "\n Price: " + Product.price;
+            self.titleLabel.text = Product.name + "\n Product Category: " + Product.category + "\n Product ID: " + Product.uid  + "\n Price: " + Product.price ;
             //self.setFavouriteButton()
         }
     }
@@ -292,11 +292,17 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
         let centreWidth = screenWidth / 2;
+        print();
+        print("The category of the product is:")
+        print(ProductItem?.category);
         
         errorMessageLabel.center.x = centreWidth + 7;
         
         let titleLabelX = titleLabel.center.x;
-        paintingButton.center.x = (titleLabelX - 8);
+        paintingButton.center.x = (screenWidth -  70);
+        favouriteButton.center.x = (screenWidth - 70);
+        
+        favouriteButton.center.y = (paintingButton.center.y - 20)
         
         if (restrictedMode) // this is being viewed by the cart
         {

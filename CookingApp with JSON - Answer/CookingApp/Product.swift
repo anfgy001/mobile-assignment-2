@@ -14,6 +14,7 @@ class Product: NSObject {
     var name: String! = ""
     //var favourite = false
     var uid: String!
+    var category: String!
     var price: String!
     var addedToCart = false;
     var ABSPrinting:Bool = false;
@@ -46,6 +47,15 @@ class Product: NSObject {
         self.name = name;
         self.image = image;
         self.price = price;
+    }
+    
+    init(uid: String, name: String, image: UIImage, price: String, category: String)
+    {
+        self.uid = uid;
+        self.name = name;
+        self.image = image;
+        self.price = price;
+        self.category = category;
     }
     
     override func isEqual(_ object: Any?) -> Bool {

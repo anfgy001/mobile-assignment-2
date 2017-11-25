@@ -73,6 +73,7 @@ class SearchViewController : DetailViewController {
                 combinedString = combinedString + "\nName: " + theProduct.name;
                 combinedString = combinedString + "\nPrice: " + theProduct.price;
                 combinedString = combinedString + "\nID: " + theProduct.uid;
+                combinedString = combinedString + "\nCategory: " + theProduct.category;
                 combinedString = combinedString + "\n";
             }
         }

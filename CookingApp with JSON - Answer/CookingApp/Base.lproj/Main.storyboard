@@ -260,18 +260,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Product Information" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORz-bQ-tGi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Product Information" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ORz-bQ-tGi">
                                 <rect key="frame" x="16" y="559" width="553" height="21"/>
                                 <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IV2-dR-Mt1">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IV2-dR-Mt1">
                                 <rect key="frame" x="15" y="72" width="568" height="472"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7zS-4P-Q63">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7zS-4P-Q63">
                                 <rect key="frame" x="522" y="555" width="79" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add to Cart">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -294,14 +295,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ONu-R7-JSY">
-                                <rect key="frame" x="227" y="646" width="131" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add Painting"/>
-                                <connections>
-                                    <action selector="paintingStatusChange:" destination="N3O-Pj-BeQ" eventType="touchUpInside" id="jdK-gm-OOZ"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Qty:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8VK-d7-Zmy">
                                 <rect key="frame" x="227" y="689" width="74" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -323,6 +316,14 @@
                                 <color key="textColor" red="1" green="0.13747174840000001" blue="0.083894435340000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ONu-R7-JSY">
+                                <rect key="frame" x="245" y="649" width="131" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Painting"/>
+                                <connections>
+                                    <action selector="paintingStatusChange:" destination="N3O-Pj-BeQ" eventType="touchUpInside" id="jdK-gm-OOZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.3252929151058197" green="0.72314411401748657" blue="0.8943219780921936" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -330,15 +331,9 @@
                             <constraint firstItem="ORz-bQ-tGi" firstAttribute="leading" secondItem="DfP-W6-h3P" secondAttribute="leadingMargin" id="6aa-WD-kqY"/>
                             <constraint firstItem="omZ-Wx-S26" firstAttribute="top" secondItem="ORz-bQ-tGi" secondAttribute="bottom" constant="20" id="9C2-g5-vcH"/>
                             <constraint firstItem="IV2-dR-Mt1" firstAttribute="top" secondItem="J95-h5-FwW" secondAttribute="bottom" constant="8" symbolic="YES" id="KVP-Ra-7Rc"/>
-                            <constraint firstItem="7zS-4P-Q63" firstAttribute="leading" secondItem="ORz-bQ-tGi" secondAttribute="trailing" constant="8" id="Kh4-7f-KW1"/>
-                            <constraint firstItem="7zS-4P-Q63" firstAttribute="top" secondItem="IV2-dR-Mt1" secondAttribute="bottom" constant="11" id="Ox3-jg-vEH"/>
                             <constraint firstItem="IV2-dR-Mt1" firstAttribute="trailing" secondItem="DfP-W6-h3P" secondAttribute="trailingMargin" id="YHn-Do-IIT"/>
                             <constraint firstItem="IV2-dR-Mt1" firstAttribute="leading" secondItem="DfP-W6-h3P" secondAttribute="leadingMargin" id="ZJc-JZ-vRw"/>
-                            <constraint firstItem="7zS-4P-Q63" firstAttribute="top" secondItem="IV2-dR-Mt1" secondAttribute="bottom" constant="11" id="a43-JE-chF"/>
                             <constraint firstItem="IV2-dR-Mt1" firstAttribute="leading" secondItem="ORz-bQ-tGi" secondAttribute="leading" id="cKg-AF-45s"/>
-                            <constraint firstItem="IV2-dR-Mt1" firstAttribute="trailing" secondItem="7zS-4P-Q63" secondAttribute="trailing" id="eOd-Oz-XjO"/>
-                            <constraint firstItem="7zS-4P-Q63" firstAttribute="trailing" secondItem="DfP-W6-h3P" secondAttribute="trailingMargin" id="igY-Sg-gVh"/>
-                            <constraint firstItem="omZ-Wx-S26" firstAttribute="top" secondItem="7zS-4P-Q63" secondAttribute="bottom" constant="15" id="r4k-ZF-kir"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
