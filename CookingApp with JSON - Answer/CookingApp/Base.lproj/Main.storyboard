@@ -123,7 +123,7 @@
                         <segue destination="dkF-tN-1iu" kind="showDetail" identifier="Products" id="02d-82-pwV"/>
                         <segue destination="wBQ-5o-6Qm" kind="showDetail" identifier="Cart" id="PtL-IZ-e1y"/>
                         <segue destination="jjP-B8-Vd9" kind="showDetail" identifier="Search" id="rxc-to-Ol0"/>
-                        <segue destination="XsB-O5-nvd" kind="showDetail" id="WqW-0n-b2Q"/>
+                        <segue destination="XsB-O5-nvd" kind="showDetail" identifier="Finder" id="WqW-0n-b2Q"/>
                         <segue destination="Eet-er-jan" kind="showDetail" identifier="Checkout" id="yos-AX-8T3"/>
                     </connections>
                 </tableViewController>
@@ -527,7 +527,7 @@
         <!--Detail-->
         <scene sceneID="VJl-g6-0aT">
             <objects>
-                <viewController title="Detail" id="XP8-iW-Xzb" customClass="DetailViewController" customModule="CookingApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Detail" id="XP8-iW-Xzb" customClass="FinderViewController" customModule="CookingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="H59-ZE-xnp"/>
                         <viewControllerLayoutGuide type="bottom" id="ecz-pg-pPV"/>
@@ -535,14 +535,81 @@
                     <view key="view" contentMode="scaleToFill" id="FDv-Bp-urC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Finder" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FaK-Ob-bAe">
+                                <rect key="frame" x="45" y="84" width="325" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Coordinate 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7A-6r-J3h">
+                                <rect key="frame" x="46" y="178" width="97" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Coordinate 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3d-Q1-W2Q">
+                                <rect key="frame" x="45" y="261" width="99" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xFJ-YP-esx">
+                                <rect key="frame" x="167" y="173" width="179" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" keyboardAppearance="alert"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fYf-O2-51R">
+                                <rect key="frame" x="167" y="256" width="179" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" keyboardAppearance="alert"/>
+                            </textField>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etP-mU-RPU">
+                                <rect key="frame" x="30" y="401" width="355" height="302"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7x-dm-76Y">
+                                <rect key="frame" x="11" y="300" width="370" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RpS-eN-kgT">
+                                <rect key="frame" x="121" y="363" width="150" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Find Nearest Location"/>
+                                <connections>
+                                    <action selector="finderButtonPressed:" destination="XP8-iW-Xzb" eventType="touchUpInside" id="m2V-od-sdr"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.32488384040000001" green="0.72212303050000004" blue="0.89306351839999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Finder" id="DYm-6n-H3h"/>
+                    <connections>
+                        <outlet property="coordinate1TextField" destination="xFJ-YP-esx" id="r2m-Vm-oHG"/>
+                        <outlet property="coordinate2TextField" destination="fYf-O2-51R" id="8M2-ly-UnJ"/>
+                        <outlet property="finderButton" destination="RpS-eN-kgT" id="fMy-59-NP9"/>
+                        <outlet property="finderDetailLabel" destination="FaK-Ob-bAe" id="UAv-F2-vH8"/>
+                        <outlet property="promptLabel" destination="N7x-dm-76Y" id="QyW-gS-rQx"/>
+                        <outlet property="storeInfoLabel" destination="etP-mU-RPU" id="EvC-yQ-DZX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Mp-sN-wcl" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2948" y="872"/>
+            <point key="canvasLocation" x="2947.826086956522" y="870.6521739130435"/>
         </scene>
         <!--Detail-->
         <scene sceneID="VHo-ke-A6Z">

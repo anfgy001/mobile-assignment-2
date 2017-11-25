@@ -1,9 +1,8 @@
 //
 //  CheckoutViewController.swift
-//  CookingApp
+//  Mobile Application Enterprise Development Assignment 2
 //
-//  Created by Anfiteatro, Gianni - anfgy001 on 18/11/17.
-//  Copyright © 2017 Adam Jenkins. All rights reserved.
+//  Created by Gianni Anfiteatro
 //
 
 import Foundation

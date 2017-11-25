@@ -1,5 +1,5 @@
 //
-//  Recipe.swift
+//  Product.swift
 //  Mobile Application Enterprise Development Assignment 2
 //
 //  Created by Gianni Anfiteatro

@@ -1,5 +1,5 @@
 //
-//  ProductsViewController.swift
+//  ProductListViewController.swift
 //  Mobile Application Enterprise Development Assignment 2
 //
 //  Created by Gianni Anfiteatro

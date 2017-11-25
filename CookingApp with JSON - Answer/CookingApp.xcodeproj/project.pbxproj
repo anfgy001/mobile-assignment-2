@@ -25,6 +25,8 @@
 		389D3C3A1F9C6F1F00F5F1D9 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389D3C391F9C6F1F00F5F1D9 /* SwiftyJSON.swift */; };
 		5D3BEEC81FB96C56007FA243 /* products.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D3BEEC71FB96C56007FA243 /* products.png */; };
 		5D3BEED01FB97186007FA243 /* Title.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D3BEECF1FB97186007FA243 /* Title.png */; };
+		5DC2B8A21FC900CE007D7B17 /* finder.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DC2B8A11FC900CE007D7B17 /* finder.png */; };
+		5DC2B8A41FC9020B007D7B17 /* FinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC2B8A31FC9020B007D7B17 /* FinderViewController.swift */; };
 		5DC7C8FE1FB9A10F00E36BB0 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DC7C8FD1FB9A10F00E36BB0 /* home.png */; };
 		5DD044331FC011B30008E8DE /* checkout.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD044321FC011B30008E8DE /* checkout.png */; };
 		5DD044351FC0132B0008E8DE /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD044341FC0132B0008E8DE /* CheckoutViewController.swift */; };
@@ -64,6 +66,8 @@
 		389D3C391F9C6F1F00F5F1D9 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		5D3BEEC71FB96C56007FA243 /* products.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = products.png; sourceTree = "<group>"; };
 		5D3BEECF1FB97186007FA243 /* Title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Title.png; sourceTree = "<group>"; };
+		5DC2B8A11FC900CE007D7B17 /* finder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = finder.png; sourceTree = "<group>"; };
+		5DC2B8A31FC9020B007D7B17 /* FinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderViewController.swift; sourceTree = "<group>"; };
 		5DC7C8FD1FB9A10F00E36BB0 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		5DD044321FC011B30008E8DE /* checkout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkout.png; sourceTree = "<group>"; };
 		5DD044341FC0132B0008E8DE /* CheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 		3842880F1DCB31B800D860FD /* CookingApp */ = {
 			isa = PBXGroup;
 			children = (
+				5DC2B8A11FC900CE007D7B17 /* finder.png */,
 				5DEF78601FBEB96E00AA28C0 /* cart.png */,
 				5DD044321FC011B30008E8DE /* checkout.png */,
 				5DC7C8FD1FB9A10F00E36BB0 /* home.png */,
@@ -119,6 +124,7 @@
 				384288171DCB31B800D860FD /* MasterViewController.swift */,
 				384288191DCB31B800D860FD /* DetailViewController.swift */,
 				3842881B1DCB31B800D860FD /* Main.storyboard */,
+				5DC2B8A31FC9020B007D7B17 /* FinderViewController.swift */,
 				5DD044341FC0132B0008E8DE /* CheckoutViewController.swift */,
 				3842884F1DCB5C0A00D860FD /* Cell.swift */,
 				3842881E1DCB31B800D860FD /* Images.xcassets */,
@@ -246,6 +252,7 @@
 				5D3BEED01FB97186007FA243 /* Title.png in Resources */,
 				3842881D1DCB31B800D860FD /* Main.storyboard in Resources */,
 				5DC7C8FE1FB9A10F00E36BB0 /* home.png in Resources */,
+				5DC2B8A21FC900CE007D7B17 /* finder.png in Resources */,
 				384288221DCB31B800D860FD /* LaunchScreen.xib in Resources */,
 				5DD044331FC011B30008E8DE /* checkout.png in Resources */,
 				3842881F1DCB31B800D860FD /* Images.xcassets in Resources */,
@@ -279,6 +286,7 @@
 				3842881A1DCB31B800D860FD /* DetailViewController.swift in Sources */,
 				384288481DCB599300D860FD /* SingletonManager.swift in Sources */,
 				384288541DCB78D400D860FD /* ProductItemViewController.swift in Sources */,
+				5DC2B8A41FC9020B007D7B17 /* FinderViewController.swift in Sources */,
 				384288561DCB7E0A00D860FD /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
