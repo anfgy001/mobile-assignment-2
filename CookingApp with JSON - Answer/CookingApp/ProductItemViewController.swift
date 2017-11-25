@@ -300,7 +300,8 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         
         let titleLabelX = titleLabel.center.x;
         paintingButton.center.x = (screenWidth -  70);
-        favouriteButton.center.x = (screenWidth - 70);
+        favouriteButton.center.x = (screenWidth - 70
+        );
         
         favouriteButton.center.y = (paintingButton.center.y - 20)
         

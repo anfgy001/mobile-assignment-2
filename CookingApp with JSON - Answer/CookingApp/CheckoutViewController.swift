@@ -148,6 +148,16 @@ class CheckoutViewController : DetailViewController {
                     return;
                 }
             }
+            else if (field == 4)
+            {
+                if(inputs[field].text!.characters.count < 3)
+                {
+                    cartDescriptionLabel.textColor = UIColor.red;
+                    cartDescriptionLabel.text = cartDescriptionLabel.text! + "\nWARNING: Please input a valid Name";
+                    //cvvErrorPreviously = true;
+                    return;
+                }
+            }
             else if (field == 5) //dealing with CVV
             {
                 if(inputs[field].text!.characters.count != 3)
@@ -158,6 +168,7 @@ class CheckoutViewController : DetailViewController {
                     return;
                 }
             }
+            
             
         }
         
