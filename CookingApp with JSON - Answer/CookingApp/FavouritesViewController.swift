@@ -8,6 +8,10 @@
 import UIKit
 
 //CartViewController
+/*
+ CartViewController is the main view controller for the Cart detail pane
+It deals with presenting all of the products that are in the cart to the screen in a collectionv view
+ */
 class FavouritesViewController: DetailViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     let model = SingletonManager.model
@@ -30,15 +34,11 @@ class FavouritesViewController: DetailViewController, UICollectionViewDataSource
         self.collectionView!.reloadData()
     }
     
-    // Mark: Segue
-    
+    /*
+     This is to deal with preparing from a previous segue to transfer data to the detail pane
+     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        //print("In the item as it's in cart");
-        
-        //print("top of the prepare");
-        
-        //print(segue.identifier);
             
         // Find out what row was selected
         let indexPath = self.collectionView?.indexPath(for: sender as! Cell)
@@ -51,11 +51,7 @@ class FavouritesViewController: DetailViewController, UICollectionViewDataSource
         // Get the selected cell's image
         let Product = model.cartList[indexPath!.row]
         // gets the latest instance, not any old instances
-        print("PRODUCT DETAILS " + Product.name + " IS THE PRODUCT NAME");
-        print();
-        print("PRODUCT IS ABS PRINTED? \(Product.ABSPrinting)");
 
-        
         
         // Pass the content to the detail view
         detailView.ProductItem = Product
@@ -64,20 +60,27 @@ class FavouritesViewController: DetailViewController, UICollectionViewDataSource
         detailView.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
         detailView.navigationItem.leftItemsSupplementBackButton = true
         
-        
+        // Once the processing is complete, it has been added to cart, it is now in a restricted mode for the cart viewing
         detailView.restrictedMode = true;
     }
     
-    // MARK: UICollectionView Data Source
-    
+    /*
+        returns 1 for the number of sections in a collection view
+     */
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
+    /*
+        returns the number of products in the cart for the number of sections in a collection view
+     */
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return model.cartList.count
     }
     
+    /*
+        This completes processing to present the server data to UI elements of the application (e.g. ImageView etc)
+     */
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         // Get an instancer of the prototype Cell we created
@@ -92,9 +95,7 @@ class FavouritesViewController: DetailViewController, UICollectionViewDataSource
         // Return the cell
         return cell
     }
-    
-    // MARK: UICollectionView delegate
-    
+        
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
     

@@ -6,7 +6,12 @@
 //
 
 import UIKit
-
+/*
+ ProductListViewController is the main view controller for the ProductList detail pane
+ It deals with presenting the product list in a collection view and integrating product names to the screen also
+ 
+ 
+ */
 class ProductListViewController: DetailViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     let model = SingletonManager.model
@@ -26,6 +31,10 @@ class ProductListViewController: DetailViewController, UICollectionViewDataSourc
     }
         // Mark: Segue
     
+    /*
+     This deals with the incoming segue for the ProductList and presenting the data from that segue
+ 
+     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
                 
         // Find out what row was selected
@@ -50,16 +59,23 @@ class ProductListViewController: DetailViewController, UICollectionViewDataSourc
                 
     }
     
-    // MARK: UICollectionView Data Source
-    
+    /*
+     This returns the number of sections of the collection view
+    */
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
+    /*
+     This returns the number of products in the system in a collection view instance
+    */
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return model.Products.count
     }
     
+    /*
+        This collectionView instance obtains the data from the server to input onto the page itself e.g. its image and name to their relevant app fields
+     */
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         // Get an instancer of the prototype Cell we created
@@ -74,9 +90,7 @@ class ProductListViewController: DetailViewController, UICollectionViewDataSourc
         // Return the cell
         return cell
     }
-    
-    // MARK: UICollectionView delegate
-    
+        
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
     

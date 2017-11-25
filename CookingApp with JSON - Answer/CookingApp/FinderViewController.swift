@@ -16,6 +16,8 @@ import UIKit
     For example: Coordinate 1 and Coordinate 2 Text Field Inputs use the Decimal Pad 
     So only integers or decimals can be created from using that specific keyboard.
  
+    FinderViewController is the view controller for the Finder Detail Pane
+ 
  */
 class FinderViewController : DetailViewController {
     
@@ -33,14 +35,20 @@ class FinderViewController : DetailViewController {
     
     @IBOutlet weak var promptLabel: UILabel!
     
-    // closestLocation stores the details of the store location found closest in the following format 
-    // street
-    // suburb
-    // postcode
-    // state
-    // country code
+    /* closestLocation stores the details of the store location found closest in the following format
+     street
+     suburb
+     postcode
+     state
+     country code
+     
+     Reasoning as to why they are stored in a generic array as opposed to say a dictionary, is mainly for complexity and time issues/constraints
+     but also, since only 5 key data items are to be stored, an array of details, so long as it is adequately validated and checked consistantly and constantly, should be suffice.
+     
+     userCoordinates and closestDistance given -1 initial values for determining erroneous input (e.g. if closestDistance < 0 there is an error)
+ 
+     */
     var closestLocation = [String]();
-    
     
     var closestDistance:Double = -1;
     
@@ -70,8 +78,15 @@ class FinderViewController : DetailViewController {
         
     }
     
+    /**
+     Main URL builder segment obtains JSON String from the server
+     Also processes each individual JSON string element, to determine if it is the closest distance or not.
+     Uses manhattan distance method to work out the distance between the user and the store
+ 
+    */
     func urlBuilder()
     {
+        // URL server obtained section
         var urlString:String = "http://partiklezoo.com/3dprinting/?action=locations&coord1=2&coord2=3";
         
         var url = NSURL(string: urlString);
@@ -82,8 +97,7 @@ class FinderViewController : DetailViewController {
             {(data, response, error) in
             do {
                 let json = try JSON(data: data!)
-                print();
-                print("gets here");
+
                 for count in 0...json.count - 1 // for each location see if its the closest
                 {
                     var storeCoord1 = Double(json[count]["coord1"].string!);
@@ -109,7 +123,7 @@ class FinderViewController : DetailViewController {
                         self.closestLocation.append(json[count]["countrycode"].string!);
                         
                     }
-                    else
+                    else // closestDistance has already been set by another store
                     {
                         if (theDistance < self.closestDistance)
                         {
@@ -120,10 +134,6 @@ class FinderViewController : DetailViewController {
                             self.closestLocation[2] = json[count]["postcode"].string!;
                             self.closestLocation[3] = json[count]["state"].string!;
                             self.closestLocation[4] = json[count]["countrycode"].string!;
-                            //sleep(1);
-                            //storeName = storeName +
-                            
-                            print("TEST COUNT IS \(self.closestLocation.count)");
                             
                         }
                     }
@@ -131,7 +141,7 @@ class FinderViewController : DetailViewController {
                 }
                 
                 var outputStringBuilder:String = "The Closest Location Is:";
-                print(self.closestLocation.count);
+                
                 for field in 0...self.closestLocation.count-1
                 {
                     outputStringBuilder = outputStringBuilder + "\n\(self.closestLocation[field])";
@@ -155,13 +165,20 @@ class FinderViewController : DetailViewController {
         
     }
     
+    /*
+ 
+     Once the finder button is pressed:
+     Checks that coordinate 1 and 2 have been filled in, through previous processing, if so, returns the function
+     If the error message still appears from previous computation, and there are no errors in this instance, gets rid of it.
+     
+    */
     @IBAction func finderButtonPressed(_ sender: Any)
     {
         // input validation check for no values
         
         // convert the coordinates to doubles
-        var coord1Double:Double = convertToDouble(theString: coordinate1TextField.text);
-        var coord2Double:Double = convertToDouble(theString: coordinate2TextField.text);
+        let coord1Double:Double = convertToDouble(theString: coordinate1TextField.text);
+        let coord2Double:Double = convertToDouble(theString: coordinate2TextField.text);
         
         // invalid input
         if (coord1Double == -1)
@@ -192,6 +209,7 @@ class FinderViewController : DetailViewController {
             promptLabel.isHidden = true;
         }
         
+        // This is used to hide the user keyboard on the button pressed
         self.view.endEditing(true)
         
         userCoordinate1 = coord1Double;
@@ -199,17 +217,18 @@ class FinderViewController : DetailViewController {
         
         urlBuilder()
         
-        print("OUTPUT STRING" + outputString);
+        // Sleep is used so that the program has enough time to obtain the data from the server
         sleep(2);
-        print("OUTPUT STRING" + outputString)
+        
         storeInfoLabel.isHidden = false;
         storeInfoLabel.text = outputString;
-        
-
-        
-        
     }
     
+    /**
+     This function converts a string to a double
+     Input validation checking is included for un-convertable strings and empty strings
+     
+    */
     func convertToDouble(theString: String!) -> Double
     {
         var result:Int = 0;

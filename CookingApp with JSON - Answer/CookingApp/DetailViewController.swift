@@ -7,17 +7,18 @@
 
 import UIKit
 
+/**
+ 
+ The DetailViewController is used for the Home Page of the application as it's main view controller
+ */
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
     @IBOutlet weak var titleImage: UIImageView!
     
-    
-
     var detailItem: AnyObject? {
         didSet {
-            // Update the view.
             self.configureView()
         }
     }
@@ -33,15 +34,11 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         self.configureView()
-        
-        //titleImage.image = UIImage(named: "Title");
-    }
+            }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 

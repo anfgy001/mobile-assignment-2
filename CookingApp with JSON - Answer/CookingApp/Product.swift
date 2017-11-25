@@ -7,6 +7,11 @@
 
 import UIKit
 
+/*
+ The Product swift class contains all the data abstractions for the Product
+ This includes all of its details and its app specific variables like whether its particular instance was painted, whether it is using ABS etc
+ 
+ */
 class Product: NSObject {
     var image: UIImage?
     //var details: String! = ""

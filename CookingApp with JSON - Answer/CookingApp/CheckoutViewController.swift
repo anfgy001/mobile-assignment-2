@@ -8,11 +8,14 @@
 import Foundation
 import UIKit
 
+/**
+    The CheckoutViewController is the main view controller for the Checkout Detail Pane
+    It handles empty cart scenarios and filled cart scenarios
+    When a cart has item(s) present, it allows for credit card information to be added before executing a payment process
+ */
 class CheckoutViewController : DetailViewController {
     
     let model = SingletonManager.model
-    
-
     
     @IBOutlet weak var numberOfProductsLabel: UILabel!
     
@@ -39,11 +42,10 @@ class CheckoutViewController : DetailViewController {
     @IBOutlet weak var ccField4: UITextField!
     @IBOutlet weak var OwnerField: UITextField!
     
-    
-    
     var checkoutComplete:Bool = false;
     
     @IBOutlet weak var cvvLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad();
         self.configureView();
@@ -80,6 +82,8 @@ class CheckoutViewController : DetailViewController {
         numberOfProductsLabel.text = numberOfProductsLabel.text! + " \(cartListNumber)";
         
         // go through cart list
+        // for each item in the cart list, add their details to the cart description, also compute the price of each individual item
+        // as well as the price of the item's worth by its quantity and display to the screen
         for item in model.cartList
         {
             let productName = item.name!;
@@ -127,9 +131,16 @@ class CheckoutViewController : DetailViewController {
         cartDescriptionLabel.text = cartDescriptionLabel.text! + "\nNumber of Total Items: \(globalItemNumber)";
         
         storedReceipt = cartDescriptionLabel.text!;
-        //reviewCart();
     }
     
+    /**
+ 
+     The purchase button when clicked goes through each field checking for user input validation
+     If any input is not correct, returns function
+     If all text fields entered successfully, completes payment process
+     
+     
+    */
     @IBAction func purchase(_ sender: Any)
     {
         self.view.endEditing(true)
@@ -176,6 +187,7 @@ class CheckoutViewController : DetailViewController {
         cartDescriptionLabel.text = cartDescriptionLabel.text! + "\nYour purchase has completed";
         checkoutComplete = true;
     }
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
@@ -217,7 +229,7 @@ class CheckoutViewController : DetailViewController {
     
 }
 /*
-    This code is used to give input fields a max length
+    This code is used to give input fields a max length for user input validation
  */
 private var __maxLengths = [UITextField: Int]()
 

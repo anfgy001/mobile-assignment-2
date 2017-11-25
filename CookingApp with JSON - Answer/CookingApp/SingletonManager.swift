@@ -6,7 +6,10 @@
 //
 
 import Foundation
-
+/*
+ SingletonManager deals with keeping track of the Model class to a specific instance across all detail panes
+ 
+ */
 class SingletonManager {
     static let model = Model()
 }

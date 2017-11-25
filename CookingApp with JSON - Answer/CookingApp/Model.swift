@@ -8,6 +8,14 @@
 import UIKit
 import CoreData
 
+/**
+ The Model class abstracts all of the data processing in terms of the core aspects of the system including 
+    Refreshing products
+    Adding menus
+    Loading Products
+    Keeping track of the cart list
+    Image loading etc.
+ */
 class Model {
     
     var segueArray = [String]()
@@ -38,6 +46,7 @@ class Model {
         self.loadProducts()
     }
     
+    // This is the container for all items that get added to the cart
     var cartList: [Product] { 
         get {
             var selectedProducts = [Product]()
@@ -57,6 +66,10 @@ class Model {
         }
     }
     
+    /*
+     refreshProducts obtains all items from the server adn assigns them to a Product
+ 
+     */
     func refreshProducts()
     {
         let url = NSURL(string: "http://partiklezoo.com/3dprinting/")
@@ -90,6 +103,11 @@ class Model {
         task.resume()
     }
     
+    /**
+ 
+     loadProducts obtains products from the current state and integrates them into a storedProducts array
+     
+     */
     func loadProducts() {
         let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
@@ -127,6 +145,11 @@ class Model {
         }
     }
     
+    /*
+ 
+     checkForProduct deals with product equality checking
+     
+    */
     func checkForProduct(_ searchItem: Product) -> Int {
         var targetIndex = -1
         
@@ -141,6 +164,11 @@ class Model {
         return targetIndex
     }
     
+    
+    /*
+     addItemToProducts is another function that aids with transferring products from the server to the application
+ 
+    */
     func addItemToProducts(_ newProduct: Product!, imageURL: String) {
         if (checkForProduct(newProduct) == -1)
         {
@@ -174,6 +202,10 @@ class Model {
         }
     }
     
+    /*
+     loadImage deals with transferring the image URL from the server to an actual image on the application
+ 
+    */
     func loadImage(_ imageURL: String) -> UIImage
     {
         var image: UIImage!
@@ -198,6 +230,10 @@ class Model {
         return image!
     }
     
+    /*
+     updateProduct daels with when a product gets transferred to its own page and how the data from the server gets transferred also
+ 
+     */
     func updateProduct(_ newProduct: Product!) {
         
         let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext

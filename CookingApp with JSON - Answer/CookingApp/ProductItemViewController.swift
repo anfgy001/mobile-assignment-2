@@ -7,6 +7,21 @@
 
 import UIKit
 
+/*
+ The ProductItem view controller deals with all intances of the Product Item detail pane
+ This includes
+    - Viewing the product from the product list pane
+    - Viewing the product from the cart pane
+ 
+ It is important to note that this has two different modes
+    - Operational Mode
+    - Restricted Mode
+ 
+ Operational mode is for when it has come from the Product List page, so the user can alter the purchase options e.g. painting
+ When in Restricted Mode, the user has already filled in their purchase options, they now wish to simply view what they have purchased
+    
+ If a user is not happy with the product they purchased, they can re-change their product purchase specifications from the Product List again
+ */
 class ProductItemViewController: DetailViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate
     {
     
@@ -51,6 +66,9 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         }
     }
     
+    /*
+        This deals with adding and removing quantities
+     */
     @IBAction func stepperAction(_ sender: Any)
     {
         qtyLabel.text = "Qty: ";
@@ -67,7 +85,9 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         quantity = theVal;
     }
     
-    
+    /*
+        This button deals with adding painting or removing painting from a product
+     */
     @IBAction func paintingStatusChange(_ sender: Any)
     {
         // painting price is in effect, turn it off
@@ -135,16 +155,25 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
     
     let printTypes = ["PLA", "ABS"];
     
+    /*
+        Returns 1 as number of components for the picker view
+     */
     func numberOfComponents(in pickerView: UIPickerView) -> Int
     {
         return 1;
     }
     
+    /*
+     Returns the current print type for the product as number of components for the picker view
+     */
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
     {
         return printTypes[row];
     }
     
+    /*
+     Returns the total number of print types as number of components for the picker view
+     */
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
     {
         return printTypes.count;
@@ -163,8 +192,8 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
             // (ABSPrice initialized to -1)
             if (ABSPrice < 0 && ProductItem?.ABSPrintedCharge == -1)
             {
-                print("CONVERTING ABS AGAIN");
-                print("ABS PRICE IS LESS THAN 0")
+                print()
+                print("Converting to ABS...")
                 convertToABS();
             }
             else //ABSPrice is already stored, refer to it
@@ -174,16 +203,15 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
                 convertABSPrice();
             }
             
+            // re-load the data
             configureView();
             
             ProductItem?.ABSPrinting = true;
             
-            //print("Changed to ABS");
         }
         else if (printTypes[row] == "PLA" && (ProductItem?.ABSPrinting == true)) // Changed to PLA
         {
             print()
-            print("originalPLAPrice is \(originalPLAPrice)");
             if (originalPLAPrice == ProductItem?.ABSPrintedCharge)
             {
                 originalPLAPrice = originalPLAPrice / 1.10;
@@ -191,8 +219,6 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
             }
             else if(originalPLAPrice < 0)
             {
-                print()
-                print("OriginalPLAPrice hasn't been already converted... should be")
                 initiatePrice();
             }
             else
@@ -203,9 +229,9 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
                 
             }
             
+            //re-load the data
             configureView();
             
-            //print("Changed to PLA");
             ProductItem?.ABSPrinting = false;
         }
         
@@ -215,6 +241,9 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         
     }
     
+    /*
+     Converts the absPrice to a absCharge variable, changes the price accordingly
+     */
     func convertABSPrice()
     {
         if let Product = self.ProductItem
@@ -223,7 +252,9 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
             Product.price = absStringVersion;
         }
     }
-    
+    /*
+     Converts the plaPrice to a plaCharge variable, changes the price accordingly
+     */
     func convertPLAPrice()
     {
         if let Product = self.ProductItem
@@ -260,13 +291,6 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
             
         }
     }
-        
-    //func setFavouriteButton() {
-    //    favouriteButton.setTitle("+", for: UIControlState())
-    //    if (self.ProductItem!.favourite) {
-    //        favouriteButton.setTitle("-", for: UIControlState())
-    //    }
-    //}
     
     override func configureView() {
         // Update the user interface for the detail item.
@@ -280,10 +304,16 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        
-        
     }
     
+    /*
+     At the beginning of every view intance loading
+     - Configure the view
+     - Initiate the price at first
+     - Add design constraints
+     - Check to see if restricted mode, act accordingly
+     - If not in restricted mode, enable all functions
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -352,6 +382,10 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         // Dispose of any resources that can be recreated.
     }
     
+    /*
+     Once the button is added to cart, this initiates
+     
+     */
     @IBAction func favouriteSelected(_ sender: AnyObject)
     {
         if (!restrictedMode) // when choosing
@@ -364,6 +398,9 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         
         sleep(1); // the sleep is added so the app has time to communicate with the web server to report it's findings.
         
+        
+        // if the purchase was correct with the system, complete the process
+        // if this is't the case inform the user that the purchase did not happen
         if (self.ProductItem!.successfullyPurchased)
         {
             
@@ -390,12 +427,19 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         }
     }
     
+    // Calculates the total product price (quantity * product price)
     func productQuantityTotal(productPrice: Double, quantity: Int) -> Double
     {
         let theResult = Double(quantity) * productPrice;
         return theResult;
     }
     
+    /* This is where the app interacts with the server to see if the purchase was successful
+     Grabs the data from the JSON string on the server by constructing the URL string based on the product specifications
+     Checks to see if the product was successfully added 
+     Returns the result in the form of the successfullyPurchased variable
+     
+    */
     func urlConfig()
     {
         var urlString = "http://partiklezoo.com/3dprinting/?action=purchase";
