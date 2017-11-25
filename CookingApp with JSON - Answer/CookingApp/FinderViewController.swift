@@ -110,7 +110,7 @@ class FinderViewController : DetailViewController {
         }
         
         
-        //self.view.endEditing(true)
+        self.view.endEditing(true)
         
     }
     
