@@ -19,10 +19,32 @@ class CheckoutViewController : DetailViewController {
     
     @IBOutlet weak var cartDescriptionLabel: UILabel!
     
+    var storedReceipt:String = "";
+    
     var globalTotal:Double = 0;
     
     var globalItemNumber:Int = 0;
     
+    var inputs = [UITextField!]();
+    
+    @IBOutlet weak var CVVField: UITextField!
+    
+    @IBOutlet weak var purchaseButton: UIButton!
+    
+    @IBOutlet weak var ownerLabel: UILabel!
+    
+    @IBOutlet weak var ccLabel: UILabel!
+    @IBOutlet weak var ccField1: UITextField!
+    @IBOutlet weak var ccField2: UITextField!
+    @IBOutlet weak var ccField3: UITextField!
+    @IBOutlet weak var ccField4: UITextField!
+    @IBOutlet weak var OwnerField: UITextField!
+    
+    
+    
+    var checkoutComplete:Bool = false;
+    
+    @IBOutlet weak var cvvLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad();
         self.configureView();
@@ -33,6 +55,27 @@ class CheckoutViewController : DetailViewController {
         if (cartListNumber < 1)
         {
             cartDescriptionLabel.isHidden = true;
+        }
+        else //In checkout mode, items in the cart
+        {
+            ccField1.isHidden = false;
+            ccField2.isHidden = false;
+            ccField3.isHidden = false;
+            ccField4.isHidden = false;
+            CVVField.isHidden = false;
+            purchaseButton.isHidden = false;
+            OwnerField.isHidden = false;
+            cvvLabel.isHidden = false;
+            ownerLabel.isHidden = false;
+            ccLabel.isHidden = false;
+            
+            inputs.append(ccField1);
+            inputs.append(ccField2);
+            inputs.append(ccField3);
+            inputs.append(ccField4);
+            inputs.append(OwnerField);
+            inputs.append(CVVField);
+            
         }
         
         numberOfProductsLabel.text = numberOfProductsLabel.text! + " \(cartListNumber)";
@@ -83,9 +126,46 @@ class CheckoutViewController : DetailViewController {
         var theTotal = totalToString();
         cartDescriptionLabel.text = cartDescriptionLabel.text! + "\n--------------------------------------------------\nTotal Price of Cart: \(theTotal)"
         cartDescriptionLabel.text = cartDescriptionLabel.text! + "\nNumber of Total Items: \(globalItemNumber)";
+        
+        storedReceipt = cartDescriptionLabel.text!;
         //reviewCart();
     }
     
+    @IBAction func purchase(_ sender: Any)
+    {
+        self.view.endEditing(true)
+
+        cartDescriptionLabel.text = storedReceipt
+        
+        for field in 0...inputs.count-1
+        {
+            if (field < 4) //making sure all credit card numbers are accurate
+            {
+                if (inputs[field].text!.characters.count != 4)
+                {
+                    cartDescriptionLabel.textColor = UIColor.red;
+                    cartDescriptionLabel.text = cartDescriptionLabel.text! + "\nWARNING: Please input a valid credit card number";
+                    //ccErrorPreviously = true;
+                    return;
+                }
+            }
+            else if (field == 5) //dealing with CVV
+            {
+                if(inputs[field].text!.characters.count != 3)
+                {
+                    cartDescriptionLabel.textColor = UIColor.red;
+                    cartDescriptionLabel.text = cartDescriptionLabel.text! + "\nWARNING: Please input a valid CVV";
+                    //cvvErrorPreviously = true;
+                    return;
+                }
+            }
+            
+        }
+        
+        cartDescriptionLabel.textColor = UIColor.green;
+        cartDescriptionLabel.text = cartDescriptionLabel.text! + "\nYour purchase has completed";
+        checkoutComplete = true;
+    }
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
@@ -123,5 +203,38 @@ class CheckoutViewController : DetailViewController {
     func reviewCart()
     {
         
+    }
+    
+}
+/*
+    This code is used to give input fields a max length
+ */
+private var __maxLengths = [UITextField: Int]()
+
+extension UITextField {
+    @IBInspectable var maxLength: Int {
+        get {
+            guard let l = __maxLengths[self] else {
+                return 150 // (global default-limit. or just, Int.max)
+            }
+            return l
+        }
+        set {
+            __maxLengths[self] = newValue
+            addTarget(self, action: #selector(fix), for: .editingChanged)
+        }
+    }
+    func fix(textField: UITextField) {
+        let t = textField.text
+        textField.text = t?.safelyLimitedTo(length: maxLength)
+    }
+}
+
+extension String
+{
+    func safelyLimitedTo(length n: Int)->String {
+        let c = self.characters
+        if (c.count <= n) { return self }
+        return String( Array(c).prefix(upTo: n) )
     }
 }
