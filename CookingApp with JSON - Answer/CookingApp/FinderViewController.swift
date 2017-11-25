@@ -59,7 +59,31 @@ class FinderViewController : DetailViewController {
     
     func urlBuilder()
     {
+        var urlString:String = "http://partiklezoo.com/3dprinting/?action=locations&coord1=2&coord2=3";
         
+        var url = NSURL(string: urlString);
+        let config = URLSessionConfiguration.default;
+        config.isDiscretionary = true;
+        let session = URLSession(configuration: config);
+        let task = session.dataTask(with: url! as URL, completionHandler:
+            {(data, response, error) in
+            do {
+                let json = try JSON(data: data!)
+                print();
+                print("gets here");
+                for count in 0...json.count - 1
+                {
+                    print(json[count]["suburb"].string);
+                }
+                    
+                    
+            }
+            catch let error as NSError
+            {
+                    print("Could not convert. \(error), \(error.userInfo)");
+            }
+        })
+        task.resume()
     }
     
     func manhattanDistanceCalculator()
@@ -111,6 +135,8 @@ class FinderViewController : DetailViewController {
         
         
         self.view.endEditing(true)
+        
+        urlBuilder()
         
     }
     
