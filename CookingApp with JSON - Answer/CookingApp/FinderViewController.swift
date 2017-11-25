@@ -130,7 +130,7 @@ class FinderViewController : DetailViewController {
                     
                 }
                 
-                var outputStringBuilder:String = "The Closest Location Is";
+                var outputStringBuilder:String = "The Closest Location Is:";
                 print(self.closestLocation.count);
                 for field in 0...self.closestLocation.count-1
                 {

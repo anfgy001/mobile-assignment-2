@@ -22,6 +22,7 @@ class Model {
         segueArray.append("Cart");
         segueArray.append("Checkout");
         segueArray.append("Finder");
+        segueArray.append("Search");
         
         //segueArray.append("Favourites")
         
@@ -30,6 +31,7 @@ class Model {
         segueDictionary["Cart"] = UIImage(named: "cart");
         segueDictionary["Checkout"] = UIImage(named: "checkout");
         segueDictionary["Finder"] = UIImage(named: "finder");
+        segueDictionary["Search"] = UIImage(named: "search");
         
         self.refreshProducts()
         

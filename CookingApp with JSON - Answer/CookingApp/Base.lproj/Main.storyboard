@@ -494,7 +494,7 @@
         <!--Detail-->
         <scene sceneID="Pey-EO-Erb">
             <objects>
-                <viewController title="Detail" id="QxP-pG-dne" customClass="DetailViewController" customModule="CookingApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Detail" id="QxP-pG-dne" customClass="SearchViewController" customModule="CookingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gSn-z9-JJT"/>
                         <viewControllerLayoutGuide type="bottom" id="EVX-NN-tb2"/>
@@ -514,15 +514,44 @@
                                 <rect key="frame" x="36" y="112" width="79" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Search Results:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaD-VR-yay">
+                                <rect key="frame" x="20" y="225" width="374" height="491"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Search for a Product" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byn-kT-xYO">
+                                <rect key="frame" x="128" y="72" width="158" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mjj-TQ-L2O">
+                                <rect key="frame" x="183" y="187" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="searchButtonPressed:" destination="QxP-pG-dne" eventType="touchUpInside" id="9Sl-Rj-O7w"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.32488384040000001" green="0.72212303050000004" blue="0.89306351839999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Search" id="C9J-E7-k0t"/>
+                    <connections>
+                        <outlet property="searchButton" destination="mjj-TQ-L2O" id="klE-Fd-psv"/>
+                        <outlet property="searchImageView" destination="6gw-Tv-mjZ" id="NQs-Of-zgE"/>
+                        <outlet property="searchResultsLabel" destination="QaD-VR-yay" id="atA-0D-hoz"/>
+                        <outlet property="searchTextField" destination="x86-lZ-r4q" id="YKu-0B-SKm"/>
+                        <outlet property="searchTitleLabel" destination="byn-kT-xYO" id="WoB-6T-Gac"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zW1-LL-2sH" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2216" y="872"/>
+            <point key="canvasLocation" x="2215.9420289855075" y="871.46739130434787"/>
         </scene>
         <!--Detail-->
         <scene sceneID="VJl-g6-0aT">
@@ -572,7 +601,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" keyboardAppearance="alert"/>
                             </textField>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etP-mU-RPU">
-                                <rect key="frame" x="30" y="401" width="355" height="327"/>
+                                <rect key="frame" x="20" y="401" width="374" height="327"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
