@@ -33,6 +33,10 @@ class FinderViewController : DetailViewController {
     
     @IBOutlet weak var promptLabel: UILabel!
     
+    var userCoordinate1:Double = -1;
+    
+    var userCoordinate2:Double = -1;
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -70,6 +74,8 @@ class FinderViewController : DetailViewController {
     
     @IBAction func finderButtonPressed(_ sender: Any)
     {
+        // input validation check for no values
+        
         // convert the coordinates to doubles
         var coord1Double:Double = convertToDouble(theString: coordinate1TextField.text);
         var coord2Double:Double = convertToDouble(theString: coordinate2TextField.text);
@@ -85,14 +91,26 @@ class FinderViewController : DetailViewController {
                 return;
             }
             promptLabel.text = "Warning: Please enter a valid coordinate number\nfor Coordinate 1";
+            return;
         }
         else if (coord2Double == -1) // just coordinate 2 has invalid input
         {
             promptLabel.textColor = UIColor.red;
             promptLabel.isHidden = false;
             promptLabel.text = "Warning: Please enter a valid coordinate number\nfor Coordinate 2";
+            return;
         }
-        self.view.endEditing(true)
+        
+        // user input has been validated
+    
+        // check if error message is still appearing on valid input
+        if (!promptLabel.isHidden)
+        {
+            promptLabel.isHidden = true;
+        }
+        
+        
+        //self.view.endEditing(true)
         
     }
     
@@ -108,6 +126,11 @@ class FinderViewController : DetailViewController {
             }
         }
         
+        if (theString.characters.count < 1)
+        {
+            return -1;
+        }
+        
         if (result < 2)
         {
             
@@ -119,6 +142,36 @@ class FinderViewController : DetailViewController {
             return -1;
         }
         
+    }
+    
+    /*
+     Manhattan Distance Conversion method
+     This converts the distance between x and y
+     x's coordinate 1 is A, coordinate 2 is B
+     y's coordinate 1 is C, coordinate 2 is D
+    
+     To obtain a positive number from a negative number, simply multiply it by -1
+ 
+     */
+    func manhattanDistanceConversion(xA: Double!, xB: Double!, yC: Double!, yD: Double!) -> Double
+    {
+        var aMinusC:Double = xA - yC;
+        
+        if (aMinusC < 0)
+        {
+            aMinusC = aMinusC * (-1);
+        }
+        
+        var bMinusD:Double = xB - yD;
+        
+        if (bMinusD < 0)
+        {
+            bMinusD = bMinusD * (-1);
+        }
+        
+        var finalResult:Double = aMinusC + bMinusD;
+        
+        return finalResult;
     }
     
 }
