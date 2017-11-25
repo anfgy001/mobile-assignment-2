@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CookingApp/ProductItemViewController.swift"
+            timestampString = "532650234.155784"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "3"
+            endingLineNumber = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CookingApp/ProductItemViewController.swift"
+            timestampString = "532650845.490056"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "ProductItemViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CookingApp.ProductItemViewController.model.getter : CookingApp.Model"
+                  moduleName = "CookingApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giannianfiteatro/Desktop/mobile-assignment-2-master/CookingApp%20with%20JSON%20-%20Answer/CookingApp/ProductItemViewController.swift"
+                  timestampString = "532650745.089845"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "35">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CookingApp.ProductItemViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; CookingApp.ProductItemViewController"
+                  moduleName = "CookingApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giannianfiteatro/Desktop/mobile-assignment-2-master/CookingApp%20with%20JSON%20-%20Answer/CookingApp/ProductItemViewController.swift"
+                  timestampString = "532650745.097762"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "57">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CookingApp.ProductItemViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;CookingApp.ProductItemViewController&gt;"
+                  moduleName = "CookingApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giannianfiteatro/Desktop/mobile-assignment-2-master/CookingApp%20with%20JSON%20-%20Answer/CookingApp/ProductItemViewController.swift"
+                  timestampString = "532650745.105685"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
