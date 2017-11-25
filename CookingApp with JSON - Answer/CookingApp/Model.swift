@@ -129,9 +129,6 @@ class Model {
                     let price = storedProducts[index].value(forKey: "price") as! String
                     let category = storedProducts[index].value(forKey: "category") as! String;
                     
-                    //let favourite = storedProducts[index].value(forKey: "favourite") as! Bool
-                    
-                    
                     
                     let loadedProduct = Product(uid: uid, name: name, image: image!, price: price, category: category);
                     

@@ -56,6 +56,21 @@
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQz-23-LmV">
+                                <rect key="frame" x="30" y="349" width="364" height="138"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">If you wish to change any details of a product added to your cart please do so by going back to your product via the product list</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This application is used for iOS keyboards only, there is no integration with external keyboards" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNd-8W-lyh">
+                                <rect key="frame" x="30" y="495" width="354" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.32488384040000001" green="0.72212303050000004" blue="0.89306351839999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -372,7 +387,7 @@
         <!--Detail-->
         <scene sceneID="lzK-64-xVU">
             <objects>
-                <viewController title="Detail" id="nMU-o3-avn" customClass="FavouritesViewController" customModule="CookingApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Detail" id="nMU-o3-avn" customClass="CartViewController" customModule="CookingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8Q7-9u-Ark"/>
                         <viewControllerLayoutGuide type="bottom" id="EHX-rz-dRQ"/>
