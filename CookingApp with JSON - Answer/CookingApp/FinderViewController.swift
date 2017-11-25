@@ -33,9 +33,22 @@ class FinderViewController : DetailViewController {
     
     @IBOutlet weak var promptLabel: UILabel!
     
+    // closestLocation stores the details of the store location found closest in the following format 
+    // street
+    // suburb
+    // postcode
+    // state
+    // country code
+    var closestLocation = [String]();
+    
+    
+    var closestDistance:Double = -1;
+    
     var userCoordinate1:Double = -1;
     
     var userCoordinate2:Double = -1;
+    
+    var outputString:String = "There is no stores chosen";
     
     override func viewDidLoad()
     {
@@ -71,12 +84,61 @@ class FinderViewController : DetailViewController {
                 let json = try JSON(data: data!)
                 print();
                 print("gets here");
-                for count in 0...json.count - 1
+                for count in 0...json.count - 1 // for each location see if its the closest
                 {
-                    print(json[count]["suburb"].string);
+                    var storeCoord1 = Double(json[count]["coord1"].string!);
+                    var storeCoord2 = Double(json[count]["coord2"].string!);
+                    
+                    let theDistance = self.manhattanDistanceConversion(xA: self.userCoordinate1, xB: self.userCoordinate2, yC: storeCoord1, yD: storeCoord2)
+                    
+                    print("The distance is \(theDistance)");
+                    
+                    print("the store number is \(count)");
+                    
+                    
+                    // first distance conversion, set it as the closestDistance
+                    if (self.closestDistance == -1)
+                    {
+                        self.closestDistance = theDistance;
+                        //sleep(1);
+                        
+                        self.closestLocation.append(json[count]["street"].string!);
+                        self.closestLocation.append(json[count]["suburb"].string!);
+                        self.closestLocation.append(json[count]["postcode"].string!);
+                        self.closestLocation.append(json[count]["state"].string!);
+                        self.closestLocation.append(json[count]["countrycode"].string!);
+                        
+                    }
+                    else
+                    {
+                        if (theDistance < self.closestDistance)
+                        {
+                            self.closestDistance = theDistance
+                            
+                            self.closestLocation[0] = json[count]["street"].string!;
+                            self.closestLocation[1] = json[count]["suburb"].string!;
+                            self.closestLocation[2] = json[count]["postcode"].string!;
+                            self.closestLocation[3] = json[count]["state"].string!;
+                            self.closestLocation[4] = json[count]["countrycode"].string!;
+                            //sleep(1);
+                            //storeName = storeName +
+                            
+                            print("TEST COUNT IS \(self.closestLocation.count)");
+                            
+                        }
+                    }
+                    
                 }
-                    
-                    
+                
+                var outputStringBuilder:String = "The Closest Location Is";
+                print(self.closestLocation.count);
+                for field in 0...self.closestLocation.count-1
+                {
+                    outputStringBuilder = outputStringBuilder + "\n\(self.closestLocation[field])";
+                }
+                
+                self.outputString = outputStringBuilder;
+                
             }
             catch let error as NSError
             {
@@ -84,11 +146,8 @@ class FinderViewController : DetailViewController {
             }
         })
         task.resume()
-    }
-    
-    func manhattanDistanceCalculator()
-    {
-        
+        self.outputString = "Testing";
+       
     }
     
     override func configureView()
@@ -133,10 +192,21 @@ class FinderViewController : DetailViewController {
             promptLabel.isHidden = true;
         }
         
-        
         self.view.endEditing(true)
         
+        userCoordinate1 = coord1Double;
+        userCoordinate2 = coord2Double;
+        
         urlBuilder()
+        
+        print("OUTPUT STRING" + outputString);
+        sleep(2);
+        print("OUTPUT STRING" + outputString)
+        storeInfoLabel.isHidden = false;
+        storeInfoLabel.text = outputString;
+        
+
+        
         
     }
     
