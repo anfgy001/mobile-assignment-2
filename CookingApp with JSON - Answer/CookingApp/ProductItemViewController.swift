@@ -346,19 +346,20 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
             self.ProductItem!.painted = paintingAdded;
         }
         
-        self.ProductItem!.addedToCart = true
-        
-        print("\(self.ProductItem!.name!) has been added to your cart");
-
-        self.model.updateProduct(self.ProductItem)
-        
         urlConfig();
         
-    }
-    
-    func urlBuilder()
-    {
+        sleep(1); // the sleep is added so the app has time to communicate with the web server to report it's findings.
         
+        if (self.ProductItem!.successfullyPurchased)
+        {
+            
+            self.ProductItem!.addedToCart = true
+            self.model.updateProduct(self.ProductItem)
+        }
+        else // it was not correct with the server...
+        {
+                // inform user that the product was not added to the server.
+        }
     }
     
     func productQuantityTotal(productPrice: Double, quantity: Int) -> Double
@@ -379,16 +380,14 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
         
         if (ProductItem!.ABSPrinting)
         {
-            urlString = urlString + "&material=abs";
+            urlString = urlString + "&material=pla";
         }
         else
         {
-            urlString = urlString + "&material=pla";
+            urlString = urlString + "&material=abs";
         }
         
         urlString = urlString + "&painting=\(ProductItem!.painted)";
-        print();
-        print(urlString);
         
         var url = NSURL(string: urlString);
         let config = URLSessionConfiguration.default;
@@ -399,21 +398,21 @@ class ProductItemViewController: DetailViewController, UIPickerViewDataSource, U
             {(data, response, error) in
             do {
                 let json = try JSON(data: data!)
-                
-                print("JSON COUNT IS ");
-                print(json.count);
-                
-                print(json["success"].string!)
+                if (json["success"].string! == "true")
+                {
+                    print();
+                    print("The product has successfully added to the cart.");
+                    print();
+                    self.ProductItem!.successfullyPurchased = true;
+                }
+                //print(json["success"].string!)
             }
             catch let error as NSError
             {
                 print("Could not convert. \(error), \(error.userInfo)");
             }
-            
-            
             // ... Work with data....
         })
         task.resume()
-        
     }
 }

@@ -19,7 +19,8 @@ class Product: NSObject {
     var ABSPrinting:Bool = false;
     var ABSPrintedCharge:Double = -1;
     var painted:Bool = false;
-    var quantity:Int = -1; 
+    var quantity:Int = -1;
+    var successfullyPurchased:Bool = false;
     
     override init() {
     }
